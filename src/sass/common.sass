@@ -34,12 +34,15 @@ img, svg
         letter-spacing: 0.02em
         padding: 14px 40px 16px
         border: 1px solid #FB7700
+        transition: 0.3s
         @media (max-width: 940px)
             font-size: vw(20,768)
             padding: vw(14,768) vw(40,768) vw(16,768)
         @media (max-width: 767px)
             font-size: vw(12,320)
             padding: vw(10,320) vw(24,320) vw(12,320)
+        &:hover
+            border: 1px solid #fff
     &__bg
         background-color: #FB7700
         font-family: $bold
@@ -47,6 +50,7 @@ img, svg
         line-height: 150%
         padding: 14px 40px 16px
         letter-spacing: 0.02em
+        transition: 0.3s
         @media (max-width: 1400px)
             padding: 11px 32px 13px
             font-size: 16px
@@ -56,6 +60,9 @@ img, svg
         @media (max-width: 767px)
             padding: vw(10,320) vw(24,320) vw(12,320)
             font-size: vw(12,320)
+        &:hover
+            background-color: #fff
+            color: #202020
 
 .container
     margin: 0 auto
