@@ -90,8 +90,6 @@ import Track from '@components/track'
 import Tarif from '@components/tarif-card'
 import { Swiper, SwiperSlide, directive } from 'vue-awesome-swiper'
 import Vue from 'vue'
-// import { Pagination } from 'swiper';
-// Swiper.use([Pagination])
 import "swiper/dist/css/swiper.css"
 
 export default {
