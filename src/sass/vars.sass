@@ -1,0 +1,14 @@
+$window-width: 1920
+// для резиновой верстки праобразует пиксели в vw,
+@function vw($pixels, $window-width: $window-width)
+    @if (unitless($pixels))
+        $pixels: $pixels * 1px
+    @if (unitless($window-width))
+        $window-width: $window-width * 1px
+    @return ($pixels* 100) / $window-width * 1vw
+
+$body: #202020    
+$bg: #262626
+$dark: #1A1A1A
+$light: #fff
+$prim: #FB7700

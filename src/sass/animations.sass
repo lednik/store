@@ -1,0 +1,66 @@
+.menu-enter-active, .menu-leave-active
+    transition-duration: 0.5s
+    transition-timing-function: ease-out
+
+.menu-enter, .menu-leave-to
+    transform: translateX(100%)
+
+// появление справа налево
+.right-enter-active, .right-leave-active
+    position: static
+    transition-duration: 0.4s
+    transition-timing-function: ease-in
+
+.right-enter, .right-leave-to
+    transform: translateX(40px)
+    opacity: 0
+
+// появление из невидимости
+.fade-enter-active, .fade-leave-active
+    transition-duration: 0.9s
+    transition-timing-function: ease-in-out
+
+.fade-enter, .fade-leave-to
+    opacity: 0
+
+
+.sliderInfo-enter-active
+    transition: opacity 0.4s ease-in-out 0.5s
+
+
+.sliderInfo-leave-active
+    transition: opacity 0.4s ease-in-out 0s
+
+
+.sliderInfo-enter, .sliderInfo-leave-to
+    opacity: 0
+
+///////////////////////
+.page-enter
+    transform: translateX(100%)
+
+    
+.page-enter-active
+    transition: transform .9s, opacity .4s
+    transition-delay: .0s
+    // transform: translateX(100%)  
+    opacity: 0
+
+.page-enter-to
+    transform: translateX(0) 
+    // background-attachment: scroll !important
+    // height: 100vh
+    // overflow: hidden
+    opacity: 1
+
+.page-leave
+    transform: translateX(0)
+
+.page-leave-active
+    transform: translateX(0)
+    position: absolute
+    transition: transform .6s, opacity .45s
+
+.page-leave-to
+    transform: translateX(-100%)
+    opacity: 0

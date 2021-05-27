@@ -1,0 +1,60 @@
+@import "~@styles/main.sass"
+.header
+    position: relative
+    padding: 30px 0
+    color: $light
+    @media (max-width: 767px)
+        padding: vw(12,320) vw(16,320)
+
+    &__content
+        display: flex
+        justify-content: space-between
+        align-items: center
+
+    &__logo
+        position: relative
+        z-index: 100
+        width: 138px
+        height: 48px
+        cursor: pointer
+        @media (max-width: 767px)
+            width: 138px
+            height: 48px
+    
+    &__right
+        display: flex
+        align-items: center
+        
+    
+    &__nav
+        display: flex
+        font-weight: $mid
+        @media (max-width: 940px)
+            display: none
+
+        &-item
+            cursor: pointer
+            margin-right: 32px
+            font-size: 16px
+            line-height: 150%
+            letter-spacing: 0.02em
+
+    &__phone
+        font-family: $mid
+        cursor: pointer
+        margin-right: 32px
+        font-size: 16px
+        line-height: 150%
+        letter-spacing: 0.02em
+        @media (max-width: 940px)
+            display: none
+    
+    &__button
+        padding: 7px 24px 9px
+        font-family: $mid
+        font-size: 16px
+        line-height: 150%
+        position: relative
+        z-index: 100
+        @media (max-width: 767px)
+            display: none

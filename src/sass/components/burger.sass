@@ -1,0 +1,53 @@
+@import "~@styles/main.sass"
+.burger
+    width: 28px
+    height: 20px
+    position: relative
+    z-index: 100
+    cursor: pointer
+    margin-left: vw(32,768)
+    @media (min-width: 940px)
+        display: none
+
+    &__line
+        position: absolute
+        height: 2px
+        background-color: $light
+        transition: width 0.2s ease-in-out 0.4s, opacity 0s ease-in-out 0.2s, transform 0.2s ease-in-out 0s, bottom  0.2s ease-in-out 0.2s, top  0.2s ease-in-out 0.2s
+
+    &__top
+        left: 0
+        top: 0
+        width: 28px
+
+    &__center
+        right: 0
+        width: 20px
+        top: 50%
+        transform: translateY(-1px)
+        
+    &__bottom
+        right: 0
+        width: 12px
+        bottom: 0
+    
+    &_open
+        .burger
+            &__line
+                width: 100%
+                transition: width 0.2s ease-in-out 0s, opacity 0s ease-in-out 0.2s, transform 0.2s ease-in-out 0.4s, bottom  0.2s ease-in-out 0.2s, top  0.2s ease-in-out 0.2s
+            
+            &__top
+                top: calc(50% - 1px)
+                transform: rotate(-33.69deg)
+            
+            &__center
+                opacity: 0
+
+            &__bottom
+                bottom: calc(50% - 1px)
+                transform: rotate(33.69deg)
+            
+
+    
+        

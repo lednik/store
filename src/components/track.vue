@@ -1,0 +1,35 @@
+<template>
+  <div class="track">
+    <div class="track__button">
+      <svg class="track__play track__icon" width="28" height="28" viewBox="0 0 28 28" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <path d="M0 28V0L28 13.7021L0 28Z" fill="white"/>
+      </svg>
+    </div>
+    <div class="track__info">
+      <div class="track__name">
+        {{ name }}
+      </div>
+      <div class="track__author">
+        {{ author }}
+      </div>
+    </div>
+    <div class="track__time">
+      {{ time }}
+    </div>
+  </div>
+</template>
+
+<script>
+export default {
+  name: 'gradient-bg-button',
+  props: ['id', 'name', 'author', 'time'],
+  data () {
+    return {
+    }
+  }
+}
+</script>
+
+<style lang="sass">
+@import '~@styles/components/track.sass'
+</style>

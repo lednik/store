@@ -1,0 +1,11 @@
+{
+    "include": ["./src/**/*"],
+    "compilerOptions": {
+      "baseUrl": "src",
+      "paths": {
+        "@/*": ["./*"],
+        "styles/*": ["./src/sass/"]
+      }
+    },
+    "exclude": ["node_modules"]
+  }

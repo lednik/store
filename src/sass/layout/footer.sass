@@ -1,0 +1,104 @@
+@import "~@styles/main.sass"
+.footer
+    background-color: $bg
+    padding-top: 40px
+    padding-bottom: 50px
+    @media (max-width: 940px)
+        padding-top: vw(40,768)
+        padding-bottom: vw(72,768)
+    @media (max-width: 767px)
+        padding-top: vw(28,320)
+        padding-bottom: vw(36,320)
+
+    &__content
+        display: flex
+        justify-content: space-between
+        align-items: center
+        @media (max-width: 1400px)
+            width: 860px
+        @media (max-width: 940px)
+            width: vw(600,768)
+        @media (max-width: 767px)
+            width: vw(320,320)
+            align-items: flex-start
+    
+    &__nav
+        display: flex
+        margin-bottom: 33px
+        @media (max-width: 767px)
+            flex-direction: column
+            margin-bottom: vw(56,320)
+
+        &-item
+            margin-right: 32px
+            font-family: $mid
+            font-size: 16px
+            line-height: 150%
+            letter-spacing: 0.02em
+            @media (max-width: 767px)
+                margin-right: 0
+                margin-bottom: vw(12,320)
+                font-size: vw(14,320)
+
+    
+    &__files
+        display: flex
+        @media (max-width: 1400px)
+            flex-direction: column
+
+    &__file
+        font-family: $mid
+        font-size: 16px
+        line-height: 150%
+        letter-spacing: 0.02em
+        color: #757575
+        text-decoration: underline
+        margin-right: 32px
+
+        &:not(:last-child)
+            @media (max-width: 1400px)
+                margin-right: 0
+                margin-bottom: 8px
+    
+    &__right
+        display: flex
+        flex-direction: column
+        align-items: flex-end
+    
+    &__socials
+        display: flex
+        align-items: center
+        @media (max-width: 767px)
+            flex-wrap: wrap
+            justify-content: flex-end
+        
+    
+    &__social
+        width: 24px
+        height: 24px
+        margin-bottom: 28px
+        
+        &:not(:last-child)
+            margin-right: 24px
+        
+        &:hover
+                
+    &__contacts
+        display: flex
+
+        @media (max-width: 1400px)
+            flex-direction: column
+            align-items: flex-end
+        &_dt
+            @media (max-width: 767px)
+                display: none
+        &_mb
+            @media (min-width: 768px)
+                display: none
+
+    &__phone
+        margin-right: 32px
+
+        @media (max-width: 1400px)
+            margin-right: 0
+            margin-bottom: 16px

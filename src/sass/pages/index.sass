@@ -1,0 +1,179 @@
+@import "~@styles/main.sass"
+
+.home
+    margin-top: 142px
+    margin-bottom: 180px
+    @media (max-width: 940px)
+        margin-top: vw(80,768px)
+    @media (max-width: 767px)
+        margin-top: vw(38,320)
+        margin-bottom: vw(46,320)
+
+    &__content
+        position: relative
+        margin-top: 200px
+        padding-top: vw(208)
+        display: flex
+        flex-direction: column
+        margin-bottom: 180px
+        @media (max-width: 1400px)
+            padding-top: vw(118)
+        @media (max-width: 940px)
+            margin-top: vw(88,768px)
+            padding-top: vw(88, 768)
+            margin-bottom: vw(80,768)
+        @media (max-width: 767px)
+            margin-top: vw(48,320)
+            padding-top: vw(36,320)
+            margin-bottom: vw(48,320)
+            
+    &__svg
+        position: absolute
+        top: 0
+        left: 0
+        width: 100%
+        height: auto
+
+        svg
+            width: 100%
+            height: auto
+
+    &__list
+        display: flex
+        flex-wrap: wrap
+        position: relative
+        z-index: 2
+    
+    &__catalog
+        align-self: center
+        margin-top: 8px
+        @media (max-width: 940px)
+            margin-top: vw(16,768)
+        @media (max-width: 767px)
+            margin-top: vw(12,320)
+    
+    &__tarifs
+        position: relative
+        // margin-top: 180px
+        // margin-bottom: 180px
+        padding-top: vw(216)
+        @media (max-width: 1400px)
+            padding-top: vw(150)
+        @media (max-width: 767px)
+            padding-top: vw(40,320)
+            // margin-bottom: vw()
+
+        &-list
+            display: flex
+            justify-content: space-between
+            @media (max-width: 1400px)
+                display: none
+
+    &__slider
+        @media (min-width: 1401px)
+            display: none
+    &__slide
+        width: 392px!important
+        @media (max-width: 767px)
+            width: vw(288,320)!important
+        
+.swiper-pagination
+    position: relative
+    // margin-top: px
+    @media (max-width: 767px)
+        display: none
+    
+
+.swiper-pagination-bullet
+    width: 16px
+    height: 16px
+    background-color: #3D3D3D
+    border-radius: 0
+    transition: 0.3s
+
+    &:not(:last-child)
+        margin-right: 43px
+        
+    &.swiper-pagination-bullet-active
+        background-color: #fff
+
+.swiper-wrapper
+    padding-bottom: 40px
+    padding-top: 20px
+.heroblock
+    display: flex
+    align-items: center
+    justify-content: space-between
+
+    &__blur
+        position: relative
+        @media (max-width: 767px)
+            display: none
+    
+    &__img-blur
+        position: absolute
+        width: 515px
+        height: 304px
+        bottom: -10px
+        left: 50%
+        transform: translateX(-50%)
+        object-fit: fill
+        filter: blur(26px)
+        @media (max-width: 1400px)
+            width: 411px
+            height: 242px
+        @media (max-width: 940px)
+            width: vw(268,768)
+            height: vw(158,768)
+
+    &__img
+        position: relative
+        width: 555px
+        height: 474px
+        z-index: 2
+        @media (max-width: 1400px)
+            width: 443px
+            height: 378px
+        @media (max-width: 940px)
+            width: vw(288, 768)
+            height: vw(246, 768)
+    
+    &__info
+        width: 569px
+        @media (max-width: 1400px)
+            width: 405px
+        @media (max-width: 940px)
+            width: vw(288,768)
+        @media (max-width: 767px)
+            width: vw(288,320)
+    
+    &__title
+        font-weight: $title
+        font-size: 40px
+        line-height: 150%
+        letter-spacing: 0.03em
+        margin-bottom: 40px
+        @media (max-width: 1400px)
+            font-size: 28px
+            margin-bottom: 24px
+        @media (max-width: 940px)
+            font-size: vw(20,768)
+            margin-bottom: vw(16, 768)
+        @media (max-width: 767px)
+            font-size: vw(20,320)
+            margin-bottom: vw(16,320)
+    
+    &__text
+        font-size: 24px
+        line-height: 150%
+        margin-bottom: 48px
+        @media (max-width: 1400px)
+            font-size: 16px
+            margin-bottom: 32px
+        @media (max-width: 940px)
+            font-size: vw(14,768)
+            margin-bottom: vw(42, 768)
+        @media (max-width: 767px)
+            font-size: vw(14,320)
+            margin-bottom: vw(20,320)
+    

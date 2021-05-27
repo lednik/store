@@ -1,0 +1,65 @@
+@import "~@styles/main.sass"
+.tarif-card
+    position: relative
+    z-index: 2
+    width: 392px
+    background-color: $bg
+    padding: 40px 48px 64px
+    box-shadow: 0px 12px 32px -16px rgba(0, 0, 0, 0.48)
+    transition: 0.5s
+    @media (max-width: 767px)
+        width: vw(288,320)
+        padding: vw(24,320) vw(24,320) vw(28,320)
+    &:hover
+        transform: translateY(-16px)
+        box-shadow: 0px 24px 48px -16px rgba(0, 0, 0, 0.64)
+        @media (max-width: 767px)
+            transform: translateY(0)
+    
+    &__name
+        font-family: $title
+        font-size: 40px
+        line-height: 150%
+        letter-spacing: 0.03em
+        margin-bottom: 32px
+        @media (max-width: 767px)
+            font-size: vw(20,320)
+            margin-bottom: vw(32,320)
+    
+    &__about
+        font-size: 20px
+        line-height: 150%
+        letter-spacing: 0.03em
+        height: 150px
+        text-overflow: ellipsis
+        overflow: hidden
+        margin-bottom: 24px
+        @media (max-width: 767px)
+            font-size: vw(14,320)
+            height: vw(84,320)
+            margin-bottom: vw(24,320)
+    
+    &__price
+        font-family: $title
+        font-size: 40px
+        line-height: 150%
+        letter-spacing: 0.03em
+        @media (max-width: 767px)
+            font-size: vw(20,320)
+    
+    &__description
+        font-size: 20px
+        line-height: 150%
+        letter-spacing: 0.03em
+        color: #757575
+        margin-bottom: 24px
+        @media (max-width: 767px)
+            font-size: vw(14,320)
+            margin-bottom: vw(24,320)
+
+        &_hidden
+            opacity: 0
+
+    &__button
+        width: 100%
+        text-align: center

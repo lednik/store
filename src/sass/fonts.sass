@@ -1,0 +1,51 @@
+@mixin newFont($family, $pathName)
+  @font-face
+    font-family: "#{$family}"
+    src: url("/src/assets/fonts/#{$pathName}.woff2") format("woff2"), url("/src/assets/fonts/#{$pathName}.woff") format("woff")
+    font-weight: normal
+    font-style: normal
+
+@include newFont("reg","montserrat-400")
+@include newFont("mid", "montserrat-500")
+@include newFont("bold", "montserrat-600")
+@include newFont("title", "montserrat-700")
+
+// @font-face
+//   font-family: 'mid'
+//   src: url("/src/assets/fonts/montserrat-500.woff2") format("woff2"), url("/src/assets/fonts/montserrat-500.woff") format("woff")
+//   font-weight: normal
+//   font-style: normal
+
+// FONTS
+$reg: 'reg', -apple-system, system-ui, blinkmacsystemfont, 'Lucida Grande', 'Lucida Sans Unicode', 'sans-serif'
+$mid: 'mid', -apple-system, system-ui, blinkmacsystemfont, 'Lucida Grande', 'Lucida Sans Unicode', 'sans-serif'
+$bold: 'bold', -apple-system, system-ui, blinkmacsystemfont, 'Lucida Grande', 'Lucida Sans Unicode', 'sans-serif'
+$title: 'title', -apple-system, system-ui, blinkmacsystemfont, 'Lucida Grande', 'Lucida Sans Unicode', 'sans-serif'
+// $reg: 400
+// $mid: 500
+// $bold: 600
+// $title: 700
+//  src\assets\fonts\montserrat-700.woff
+// @font-face
+//   font-family: "Monsterrat"
+//   font-weight: 400
+//   font-style: normal
+//   src: url('/src/assets/fonts/montserrat-400.woff2') format('woff2'), url('/src/assets/fonts/montserrat-400.woff') format('woff')
+
+// @font-face
+//   font-family: "Monsterrat"
+//   font-weight: 500
+//   font-style: normal
+//   src: url('/src/assets/fonts/montserrat-500.woff2') format('woff2'), url('/src/assets/fonts/montserrat-500.woff') format('woff')
+
+// @font-face
+//   font-family: "Monsterrat"
+//   font-weight: 600
+//   font-style: normal
+//   src: url('/src/assets/fonts/montserrat-600.woff2') format('woff2'), url('/src/assets/fonts/montserrat-600.woff') format('woff')
+
+// @font-face
+//   font-family: "Monsterrat"
+//   font-weight: 700
+//   font-style: normal
+//   src: url('/src/assets/fonts/montserrat-700.woff2') format('woff2'), url('/src/assets/fonts/montserrat-700.woff') format('woff');
