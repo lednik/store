@@ -49,7 +49,7 @@
 import Burger from '@components/burger'
 import Menu from '@components/menu'
 export default {
-  name: 'header',
+  name: 'top',
   components: {
     Burger,
     Menu

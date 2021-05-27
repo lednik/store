@@ -22,9 +22,9 @@
         <track-cmp
           v-for="item in tracks"
           :id="item.id"
-          :name="item.name"
-          :author="item.author"
-          :time="item.time"
+          :name="item.title"
+          :author="item.artist"
+          :time="item.duration"
           :key="item.id"
         />
       </div>
@@ -59,7 +59,7 @@
           :name="item.name"
           :id="item.id"
           :altName="item.altName"
-          :about="item.about"
+          :about="item.description"
           :price="item.price"
           :key="`tarif-${item.id}`" 
         />
@@ -75,7 +75,7 @@
           :name="item.name"
           :id="item.id"
           :altName="item.altName"
-          :about="item.about"
+          :about="item.description"
           :price="item.price"
         />
         </swiper-slide>
@@ -89,6 +89,7 @@
 import Track from '@components/track'
 import Tarif from '@components/tarif-card'
 import { Swiper, SwiperSlide, directive } from 'vue-awesome-swiper'
+import Vue from 'vue'
 // import { Pagination } from 'swiper';
 // Swiper.use([Pagination])
 import "swiper/dist/css/swiper.css"
@@ -113,102 +114,59 @@ export default {
         pagination: {
           el: '.swiper-pagination'
         }
-        // Some Swiper option/callback...
       },
-      tracks: [
-        {
-          id: 1,
-          name: 'Название трека',
-          author: 'Имя исполнителя',
-          time: '16:23'
-        },
-        {
-          id: 2,
-          name: 'Название трека',
-          author: 'Имя исполнителя',
-          time: '16:23'
-        },
-        {
-          id: 3,
-          name: 'Название трека',
-          author: 'Имя исполнителя',
-          time: '16:23'
-        },
-        {
-          id: 4,
-          name: 'Название трека',
-          author: 'Имя исполнителя',
-          time: '16:23'
-        },
-        {
-          id: 5,
-          name: 'Название трека',
-          author: 'Имя исполнителя',
-          time: '16:23'
-        },
-        {
-          id: 6,
-          name: 'Название трека',
-          author: 'Имя исполнителя',
-          time: '16:23'
-        },
-        {
-          id: 7,
-          name: 'Название трека',
-          author: 'Имя исполнителя',
-          time: '16:23'
-        },
-        {
-          id: 8,
-          name: 'Название трека',
-          author: 'Имя исполнителя',
-          time: '16:23'
-        },
-        {
-          id: 9,
-          name: 'Название трека',
-          author: 'Имя исполнителя',
-          time: '16:23'
-        },
-        {
-          id: 10,
-          name: 'Название трека',
-          author: 'Имя исполнителя',
-          time: '16:23'
-        }
-      ],
-      tarifs: [
-        {
-          id: 1,
-          name: 'Базовый',
-          altName: 'BASIC',
-          about: 'Музыка для использования в социальных сетях',
-          price: '3500 ₽'
-        },
-        {
-          id: 2,
-          name: 'Премиум',
-          altName: 'PREM',
-          about: 'Музыка для использования в цифровой рекламе, подкастах, на cайтах',
-          price: '5000 ₽'
-        },
-        {
-          id: 3,
-          name: 'Особый',
-          altName: 'SPECIAL',
-          about: 'Музыка для использования на TV, в театральных проектах, на радио и играх',
-          price: '0'
-        }
-      ]
+      tracksFilters: {
+        'pagination[order]': 'rnd',
+        'update': 1
+      },
+      tracks: [],
+      tarifs: []
     }
   },
   computed: {
     swiper() {
       return this.$refs.mySwiper.$swiper
+    },
+    tracksData() {
+      let formData = new FormData()
+      for (let key in this.tracksFilters) {
+		  	formData.append(`${key}`, this.tracksFilters[key])
+        formData.append
+		  }
+      return formData
+    }
+  },
+  methods: {
+    getTracks() {
+      let action = 'track/track/list_ajax'
+      let method = 'post'
+      Vue.http[method](action, this.tracksData)
+        .then(response => response.json())
+        .then(data => {
+          this.tracks = data.table.records
+          resolve()
+        }, data => {
+          reject()
+        })
+    },
+    getTarifs() {
+      let action = 'tariff/tariff/list_ajax'
+      let method = 'post'
+      Vue.http[method](action, this.tracksData)
+        .then(response => response.json())
+        .then(data => {
+          this.tarifs = data.table.records
+          resolve()
+        }, data => {
+          console.log('notsuccess');
+          reject()
+        })
     }
   },
   mounted () {
     this.swiper.slideTo(1, 1000, false)
+    this.getTracks()
+    this.getTarifs()
   }
 }
 </script>

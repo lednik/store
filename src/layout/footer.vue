@@ -80,7 +80,7 @@
 <script>
 // import Header from '@layout/header'
 export default {
-  name: 'footer',
+  name: 'bottom',
   components: {
     // Header
   },

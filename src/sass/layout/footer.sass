@@ -1,6 +1,6 @@
 @import "~@styles/main.sass"
 .footer
-    background-color: $bg
+    background-color:#262626
     padding-top: 40px
     padding-bottom: 50px
     @media (max-width: 940px)
@@ -21,6 +21,10 @@
         @media (max-width: 767px)
             width: vw(320,320)
             align-items: flex-start
+    
+    &__left
+        @media (max-width: 768px)
+            width: vw(180,320)
     
     &__nav
         display: flex
@@ -45,6 +49,9 @@
         display: flex
         @media (max-width: 1400px)
             flex-direction: column
+        @media (max-width: 768px)
+            width: vw(288,320)
+            
 
     &__file
         font-family: $mid
@@ -54,6 +61,8 @@
         color: #757575
         text-decoration: underline
         margin-right: 32px
+        @media (max-width: 768px)
+            font-size: vw(12,320)
 
         &:not(:last-child)
             @media (max-width: 1400px)
@@ -77,11 +86,16 @@
         width: 24px
         height: 24px
         margin-bottom: 28px
+        @media (max-width: 768px)
+            width: vw(24,320)
+            height: vw(24,320)
+            margin-bottom: vw(24,320)
         
         &:not(:last-child)
             margin-right: 24px
-        
-        &:hover
+            @media (max-width: 768px)
+                margin-right: 0
+                margin-left: vw(24,320)
                 
     &__contacts
         display: flex
@@ -89,6 +103,9 @@
         @media (max-width: 1400px)
             flex-direction: column
             align-items: flex-end
+        @media (max-width: 768px)
+            align-items: flex-start
+            margin-bottom: vw(32,320)
         &_dt
             @media (max-width: 767px)
                 display: none
