@@ -3,7 +3,7 @@
         <div class="menu__item">
             О проекте
         </div>
-        <div class="menu__item">
+        <div v-link href="/tariffs" class="menu__item">
             Тарифы
         </div>
         <div class="menu__item">

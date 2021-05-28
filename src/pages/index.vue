@@ -1,5 +1,5 @@
 <template>
-  <div class="home">
+  <div class="home page">
     <div class="heroblock container">
       <div class="heroblock__blur">
         <img src="src/assets/images/heroblock.png" class="heroblock__img" alt="bubuka">
@@ -93,7 +93,7 @@ import Tarif from '@components/tarif-card'
 import { Swiper, SwiperSlide, directive } from 'vue-awesome-swiper'
 import Vue from 'vue'
 import "swiper/dist/css/swiper.css"
-import {mapMutations} from 'vuex';
+import getTariffs from '@components/mixins/getTariffs'
 
 export default {
   name: 'home',
@@ -106,6 +106,7 @@ export default {
   directives: {
     swiper: directive
   },
+  mixins: [getTariffs],
   data () {
     return {
       swiperOptions: {
@@ -121,7 +122,7 @@ export default {
         'update': 1
       },
       tracks: [],
-      tarifs: []
+      // tarifs: []
     }
   },
   computed: {
@@ -136,7 +137,7 @@ export default {
 		  }
       return formData
     },
-    tarifsOptions() {
+    tariffsOptions() {
       let array = this.tarifs.map((tarif) => {
         return {
           id: tarif.id,
@@ -147,7 +148,6 @@ export default {
     }
   },
   methods: {
-    ...mapMutations('modal', ['showModal']),
     getTracks() {
       let action = 'track/track/list_ajax'
       let method = 'post'
@@ -159,35 +159,12 @@ export default {
         }, data => {
           reject()
         })
-    },
-    getTarifs() {
-      let action = 'tariff/tariff/list_ajax'
-      let method = 'post'
-      Vue.http[method](action, this.tracksData)
-        .then(response => response.json())
-        .then(data => {
-          this.tarifs = data.table.records
-          resolve()
-        }, data => {
-          console.log('notsuccess');
-          reject()
-        })
-    },
-    toRequest($event) {
-      this.showModal(
-        {
-          name: 'request',
-          message: `Тариф «${$event}»`,
-          list: this.tarifsOptions
-        }
-      )
-      console.log('name', $event);
     }
   },
   mounted () {
     this.swiper.slideTo(1, 1000, false)
     this.getTracks()
-    this.getTarifs()
+    this.getTariffs()
   }
 }
 </script>

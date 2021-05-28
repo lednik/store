@@ -1,0 +1,102 @@
+@import "~@styles/main.sass"
+.tariff
+    width: 1224px
+    display: flex
+    box-shadow: 0px 5px 24px -5px rgba(0, 0, 0, 0.24)
+    margin-bottom: 24px
+    @media (max-width: 1400px)
+        width: 912px
+    @media (max-width: 940px)
+        width: vw(600,768)
+    @media (max-width: 767px)
+        width: vw(288, 320)
+    &__left
+        padding: 40px 62px 64px 48px
+        background-color: #262626
+        flex: 1
+        @media (max-width: 1400px)
+            padding: 40px 64px 48px 48px
+        @media (max-width: 940px)
+            padding: vw(28,768) vw(14,768) vw(40,768) vw(36,768)
+        @media (max-width: 767px)
+            padding: vw(24,320) vw(24,320) vw(32,320)
+
+        
+    &__title
+        font-family: $title
+        font-size: 40px
+        line-height: 150%
+        margin-bottom: 32px
+        letter-spacing: 0.03em
+        @media (max-width: 1400px)
+            font-size: 28px
+        @media (max-width: 940px)
+            font-size: vw(20,768)
+            margin-bottom: vw(16,768)
+        @media (max-width: 767px)
+            font-size: vw(20,320)
+            margin-bottom: vw(24,320)
+    
+    &__about
+        font-size: 20px
+        line-height: 150%
+        letter-spacing: 0.03em
+        margin-bottom: 24px
+        height: 150px
+        text-overflow: ellipsis
+        overflow: hidden
+        -webkit-line-clamp: 5
+        display: -webkit-box
+        -webkit-box-orient: vertical
+        @media (max-width: 1400px)
+            font-size: 16px
+            -webkit-line-clamp: 6
+            // height: 150px
+        @media (max-width: 940px)
+            -webkit-line-clamp: 7
+            font-size: vw(14,768)
+            margin-bottom: vw(24,768)
+            height: 120px
+        @media (max-width: 767px)
+            font-size: vw(14,320)
+            margin-bottom: vw(24,320)
+            height: vw(147,320)
+    &__price
+        font-family: $title
+        font-size: 40px
+        line-height: 150%
+        letter-spacing: 0.03em
+        @media (max-width: 1400px)
+            font-size: 32px
+        @media (max-width: 940px)
+            font-size: vw(20,768)
+    &__description
+        font-size: 20px
+        line-height: 150%
+        letter-spacing: 0.03em
+        color: #757575
+        margin-bottom: 24px
+        @media (max-width: 1400px)
+            font-size: 16px
+        @media (max-width: 940px)
+            font-size: vw(14,768)
+            margin-bottom: vw(24,768)
+        &_hidden
+            opacity: 0
+    &__img
+        width: 544px
+        @media (max-width: 1400px)
+            width: 362px
+        @media (max-width: 940px)
+            width: vw(298,768)
+        @media (max-width: 767px)
+            display: none
+        img
+            object-fit: cover
+    &__row
+        display: flex
+        flex-wrap: wrap
+    &__button
+        margin-right: 24px
+        @media (max-width: 940px)
+            margin-bottom: vw(16,768)

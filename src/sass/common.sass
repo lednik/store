@@ -20,6 +20,9 @@ img, svg
     height: 100%
     object-fit: contain
 
+.page
+    min-height: 100vh
+
 .button
     display: inline-block
     cursor: pointer
@@ -35,12 +38,21 @@ img, svg
         padding: 14px 40px 16px
         border: 1px solid #FB7700
         transition: 0.3s
+        @media (max-width: 1400px)
+            font-size: 16px
+            padding: 10px 49px 12px
+
         @media (max-width: 940px)
             font-size: vw(20,768)
             padding: vw(14,768) vw(40,768) vw(16,768)
+
         @media (max-width: 767px)
             font-size: vw(12,320)
             padding: vw(10,320) vw(24,320) vw(12,320)
+        &_small
+            @media (max-width: 940px)
+                font-size: vw(12,768)
+                padding: vw(9,768) vw(34,768) vw(11,768)
         &:hover
             border: 1px solid #fff
     &__bg

@@ -16,13 +16,6 @@ Vue.directive('mask', VueMaskDirective)
 import vClickOutside from 'v-click-outside'
 Vue.use(vClickOutside)
 
-new Vue({
-  el: '#app',
-  router,
-  store,
-  render: h => h(App)
-})
-
 // Директива v-link вместо элемента router-link
 Vue.directive('link', {
   // Когда привязанный элемент вставлен в DOM...
@@ -52,3 +45,12 @@ function linkAction(e, item) {
     }
   }
 }
+
+new Vue({
+  el: '#app',
+  router,
+  store,
+  render: h => h(App)
+})
+
+
