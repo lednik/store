@@ -10,13 +10,27 @@
                 </div>
             </div>
             <div class="about__blur">
-                <img src="" alt="" class="about__img">
-                <img src="" alt="" class="about__img-blur">
+                <img src="src\assets\images\about-1.png" alt="" class="about__img">
+                <img src="src\assets\images\about-1.png" alt="" class="about__img-blur">
             </div>
-            
+        </div>
+        <div class="about__block about__block_reverse">
+            <div class="about__info">
+                <div class="about__title">
+                    Идеальное решение
+                </div>
+                <div class="about__about">
+                    <p class="about__paragraph">Подходит для продакшн-студий, <br> event-агентств и других компаний, занимающихся производством видеоматериалов.</p>
+                    Используйте музыку дляозвучивания подкастов, игр, роликов, постов в социальных сетях и любого другого контента.
+                </div>
+            </div>
+            <div class="about__blur">
+                <img src="src\assets\images\about-1.png" alt="" class="about__img">
+                <img src="src\assets\images\about-1.png" alt="" class="about__img-blur">
+            </div>
         </div>
         <div class="home__content about__content">
-          <div class="home__list container">
+          <div class="about__list container">
             <track-cmp
               v-for="item in tracks"
               :id="item.id"
