@@ -1,0 +1,29 @@
+@import "~@styles/main.sass"
+.info
+    display: flex
+    flex-direction: column
+    align-items: center
+    @media (max-width: 767px)
+        align-items: flex-start
+    &__title
+        margin-bottom: 24px
+        @media (max-width: 767px)
+            margin-bottom: vw(16,320)
+            max-width: vw(216,320)
+            text-align: left
+    &__text
+        margin-bottom: 32px
+        font-size: 20px
+        @media (max-width: 767px)
+            font-size: vw(14,320)
+            margin-bottom: vw(24,320)
+pre
+    font-size: 20px
+    margin: 0
+    font-family: $reg
+    color: #202020
+    @media (max-width: 767px)
+        font-size: 0
+
+
+

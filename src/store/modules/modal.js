@@ -1,7 +1,7 @@
 export default {
 	namespaced: true,
 	state: {
-        activeModalName: 'request',
+        activeModalName: '',
         props: {},
         list: [],
         success: false,

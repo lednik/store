@@ -3,6 +3,8 @@
     display: flex
     flex-direction: column
     align-items: center
+    @media (max-width: 767px)
+        align-items: flex-start
 
     &__title
         margin-bottom: 24px
@@ -14,6 +16,9 @@
         font-size: 14px
         line-height: 150%
         margin-bottom: 32px
+        @media (max-width: 767px)
+            width: 100%
+            font-size: vw(10,320)
     
     &__file
         color: #202020
@@ -22,6 +27,8 @@
     &__form
         margin-bottom: 24px
         width: 364px
+        @media (max-width: 767px)
+            width: vw(240,320)
     //     width: 728px
     //     display: flex
     //     justify-content: space-between
@@ -29,6 +36,9 @@
 
     &__select
         margin-bottom: 16px
+    
+    &__button
+        width: 100%
 
 .input 
     width: 100%
@@ -39,6 +49,9 @@
     outline: none
     background-color: unset
     border: 1px solid #757575
+    @media (max-width: 767px)
+        padding: vw(8,320) vw(16,320) vw(10,320)
+        font-size: vw(14, 320)
 
     &__wrapper 
         position: relative

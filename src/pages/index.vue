@@ -61,6 +61,7 @@
           :altName="item.altName"
           :about="item.description"
           :price="item.price"
+          @request="toRequest"
           :key="`tarif-${item.id}`" 
         />
       </div>
@@ -71,13 +72,14 @@
           :key="`tarif-${item.id}`" 
         >
           <tarif-cmp
-          class="home__tarif"
-          :name="item.name"
-          :id="item.id"
-          :altName="item.altName"
-          :about="item.description"
-          :price="item.price"
-        />
+            class="home__tarif"
+            :name="item.name"
+            :id="item.id"
+            :altName="item.altName"
+            :about="item.description"
+            :price="item.price"
+            @request="toRequest"
+          />
         </swiper-slide>
       </swiper>
       <div class="swiper-pagination" slot="pagination"></div>
@@ -91,6 +93,7 @@ import Tarif from '@components/tarif-card'
 import { Swiper, SwiperSlide, directive } from 'vue-awesome-swiper'
 import Vue from 'vue'
 import "swiper/dist/css/swiper.css"
+import {mapMutations} from 'vuex';
 
 export default {
   name: 'home',
@@ -129,12 +132,22 @@ export default {
       let formData = new FormData()
       for (let key in this.tracksFilters) {
 		  	formData.append(`${key}`, this.tracksFilters[key])
-        formData.append
+        // formData.append
 		  }
       return formData
+    },
+    tarifsOptions() {
+      let array = this.tarifs.map((tarif) => {
+        return {
+          id: tarif.id,
+          name: `Тариф «${tarif.name}»`
+        }
+      });
+      return array
     }
   },
   methods: {
+    ...mapMutations('modal', ['showModal']),
     getTracks() {
       let action = 'track/track/list_ajax'
       let method = 'post'
@@ -159,6 +172,16 @@ export default {
           console.log('notsuccess');
           reject()
         })
+    },
+    toRequest($event) {
+      this.showModal(
+        {
+          name: 'request',
+          message: `Тариф «${$event}»`,
+          list: this.tarifsOptions
+        }
+      )
+      console.log('name', $event);
     }
   },
   mounted () {

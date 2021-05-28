@@ -1,17 +1,36 @@
+@import "~@styles/main.sass"
 .select
     border: 1px solid #3D3D3D
-    color: #3D3D3D
+    color: #757575
     font-size: 20px
     line-height: 150%
     height: 60px
     cursor: pointer
-    // overflow: visible
+    transition: 0.3s
+    @media (max-width: 767px)
+        font-size: vw(14,320)
+        height: vw(42,320)
     &__item
         padding: 13px 32px 15px
+        @media (max-width: 767px)
+            padding: vw(8,320) vw(16,320) vw(10,320)
 
-    // &__value
-    //     padding: 13px 32px 15px
-        // border-bottom: 1px solid #3D3D3D
+    &__value
+        display: flex
+        justify-content: space-between
+    
+    &__arrow
+        width: 24px
+        height: 24px
+        display: flex
+        align-items: center
+        justify-content: center
+        transition: 0.3s
+        @media (max-width: 767px)
+            svg
+                width: vw(12,320)
+                height: vw(6,320)
+
     &__options
         position: relative
         z-index: 10
@@ -24,4 +43,10 @@
         transition: 0.3s
         &:hover
             background-color: #F5F5F5
+
+    &_active
+        color: #202020
+        .select
+            &__arrow
+                transform: rotate(180deg)
 

@@ -4,7 +4,12 @@
         Оставить заявку
     </div>
     <div class="request__form">
-        <select-cmp class="request__select" :options="tarifs" startOption="123" />
+        <select-cmp 
+          class="request__select"
+          :options="list"
+          :startOption="message"
+          @change-value="setTarifId($event)"
+        />
         <div class="input__wrapper">
             <transition name="fade">
               <div v-if="form.name.error" class="input__error">
@@ -83,31 +88,33 @@
         </div>
         <div class="input__wrapper">
             <transition name="fade">
-              <div v-if="form.organization.error" class="input__error">
+              <div v-if="form.company.error" class="input__error">
                 Ошибки.нет
               </div>
             </transition>
             <input
-              v-model="form.organization.value"
+              v-model="form.company.value"
               type="text"
               class="input"
               placeholder="Название организации"
-              :class="{'t-input__error' : form.organization.error}"
-              @input="form.organization.error = false"
+              :class="{'t-input__error' : form.company.error}"
+              @input="form.company.error = false"
             >
         </div>
     </div>
     <div class="request__files">
         Оставляя заявку, вы соглашаетесь с <a class="request__file" href="#">условиями пользовательского соглашения</a> и <a class="request__file" href="#"> политикой конфиденциальности</a>
     </div>
-    <div @click="validForm" class="modal__button">
+    <div @click="sendForm" class="request__button modal__button">
         Подтвердить
     </div>
 </div>
 </template>
 
 <script>
+import Vue from 'vue'
 import Select from '@ui/select'
+import {mapState, mapMutations} from 'vuex';
 export default {
   name: 'request',
   components: {
@@ -115,20 +122,6 @@ export default {
   },
   data () {
     return {
-        tarifs: [
-            {
-                id: '1',
-                value: '123'
-            },
-            {
-                id: '2',
-                value: '124'
-            },
-            {
-                id: '3',
-                value: '125'
-            }
-        ],
         form: {
             name: {
                 value: '',
@@ -150,51 +143,134 @@ export default {
                 value: '',
                 error: false
             },
-            organization: {
+            company: {
                 value: '',
                 error: false
             },
+            tariff_id: {
+              value: ''
+            }
         },
+        activeTariff: ''
     }
   },
-    methods: {
-        validForm () {
-            let valid = true
-
-            if (!this.form.name.value ||
-                this.form.name.value.length < 2 ||
-                this.form.name.value === '' ||
-                /[^A-ZА-Я-—\s]/i.test(this.form.name.value)
-            ) {
-                this.form.name.error = true
-                valid = false
-            }
-            if (this.form.phone.value.length !== 18) {
-                valid = false
-                this.form.phone.error = true
-            }
-            if (!this.form.email.value ||
-                this.form.email.value === '' ||
-                /^[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$/i.test(this.form.email.value) === false
-            ) {
-                this.form.email.error = true
-                valid = false
-            }
-            if (!this.form.country.value ||
-                this.form.country.value === ''
-            ) {
-                this.form.country.error = true
-                valid = false
-            }
-            if (!this.form.city.value ||
-                this.form.city.value === ''
-            ) {
-                this.form.city.error = true
-                valid = false
-            }
-            return valid
+  computed: {
+    ...mapState('modal', ['list', 'message']),
+    formData() {
+      let formData = new FormData()
+      formData.append('action', 'save')
+      for (let key in this.form) {
+		  	formData.append(`data[${key}]`, this.form[key].value)
+		  }
+      return formData
+    },
+  },
+  methods: {
+    ...mapMutations('modal', ['showModal']),
+    setTarifId(name) {
+      this.list.forEach(tarif => {
+        if (tarif.name == name) {
+          this.form.tariff_id.value = tarif.id
         }
+      })
+    },
+    cleanForm() {
+      this.form = {
+            name: {
+                value: '',
+                error: false
+            },
+            email: {
+                value: '',
+                error: false
+            },
+            phone: {
+                value: '',
+                error: false
+            },
+            country: {
+                value: '',
+                error: false
+            },
+            city: {
+                value: '',
+                error: false
+            },
+            company: {
+                value: '',
+                error: false
+            },
+            tariff_id: {
+              value: ''
+            }
+        }
+    },
+    sendForm() {
+      if(this.validForm()) {
+        let action = 'tariff/request/edit_ajax'
+        let method = 'post'
+        Vue.http[method](action, this.formData)
+          .then(response => response.json())
+          .then(data => {
+            console.log(data);
+            if (data.success) {
+              console.log('successs');
+              this.showModal({
+                name: 'info',
+                props: {
+                  title: 'Спасибо за&nbsp; заявку!',
+                  text: 'Наши менеджеры свяжутся с вами в ближайшее время'
+                }
+              })
+            }
+            // this.cleanForm()
+            
+            resolve()
+          }, data => {
+            console.log('notsuccess');
+            reject()
+          })  
+      }
+    },
+    validForm () {
+        let valid = true
+        if (!this.form.name.value ||
+            this.form.name.value.length < 2 ||
+            this.form.name.value === '' ||
+            /[^A-ZА-Я-—\s]/i.test(this.form.name.value)
+        ) {
+            this.form.name.error = true
+            valid = false
+        }
+        if (this.form.phone.value.length !== 18) {
+            valid = false
+            this.form.phone.error = true
+        }
+        if (!this.form.email.value ||
+            this.form.email.value === '' ||
+            /^[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$/i.test(this.form.email.value) === false
+        ) {
+            this.form.email.error = true
+            valid = false
+        }
+        if (!this.form.country.value ||
+            this.form.country.value === ''
+        ) {
+            this.form.country.error = true
+            valid = false
+        }
+        if (!this.form.city.value ||
+            this.form.city.value === ''
+        ) {
+            this.form.city.error = true
+            valid = false
+        }
+        return valid
     }
+  },
+  mounted() {
+    this.setTarifId(this.message)
+  }
 }
 </script>
 

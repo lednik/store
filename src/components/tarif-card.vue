@@ -17,7 +17,10 @@
     <div class="tarif-card__description" :class="{'tarif-card__description_hidden': price == 0}">
       в месяц
     </div>
-    <div class="tarif-card__button button__bg button">
+    <div 
+      class="tarif-card__button button__bg button"
+      @click="toRequest"
+    >
       Оставить заявку
     </div>
   </div>
@@ -25,10 +28,15 @@
 
 <script>
 export default {
-  name: 'tarif',
+  name: 'tarif-card',
   props: ['id', 'name', 'altName', 'about', 'price'],
   data () {
     return {
+    }
+  },
+  methods: {
+    toRequest() {
+      this.$emit('request', this.name)
     }
   }
 }

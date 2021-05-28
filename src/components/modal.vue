@@ -27,13 +27,7 @@
     import {mapState, mapMutations} from 'vuex';
     // дочерне компоненты
     import request from './modals/request.vue';
-    // import Login from './login/component.vue';
-    // import SuccessModal from './success-modal/component.vue';
-    // import SupportModal from './support-modal/component.vue';
-    // import AddCourse from './add-course/component.vue';
-    // import WhyUsModal from './why-us-modal/component.vue';
-    // import FilterModal from './filter-modal/component.vue';
-    // import CourseModules from './course-modules/component.vue';
+    import info from './modals/info.vue';
 
     export  default {
         data() {
@@ -46,12 +40,12 @@
             'activeModalName': function() {
                 if (this.activeModalName != '') {
                     document.addEventListener('keydown', this.fullAddEvents);
-                    document.body.style.overflowY = 'hidden'
+                    // document.body.style.overflowY = 'hidden'
                     setTimeout(() => {
                         this.isContent = true;
                     },100)
                 } else {
-                    document.body.style.overflowY = 'unset'
+                    // document.body.style.overflowY = 'unset'
                     this.isContent = false;
                     document.removeEventListener('keydown', this.fullAddEvents);
                 }
@@ -59,16 +53,10 @@
         },
         components: {
             request,
-            // Login,
-            // SuccessModal,
-            // SupportModal,
-            // AddCourse,
-            // WhyUsModal,
-            // FilterModal,
-            // CourseModules
+            info
         },
         computed: {
-            ...mapState('modal', ['activeModalName','isInfoModal'])
+            ...mapState('modal', ['activeModalName', 'isInfoModal'])
         },
         methods: {
             ...mapMutations('modal', ['closeModal']),
