@@ -3,10 +3,10 @@
    <div class="footer__content container">
        <div class="footer__left">
             <div class="footer__nav">
-                <div class="footer__nav-item">
+                <div v-link href="/about" class="footer__nav-item">
                     О проекте
                 </div>
-                <div class="footer__nav-item">
+                <div v-link href="/tariffs" class="footer__nav-item">
                     Тарифы
                 </div>
                 <div class="footer__nav-item">

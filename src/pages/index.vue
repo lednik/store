@@ -91,9 +91,9 @@
 import Track from '@components/track'
 import Tarif from '@components/tarif-card'
 import { Swiper, SwiperSlide, directive } from 'vue-awesome-swiper'
-import Vue from 'vue'
 import "swiper/dist/css/swiper.css"
 import getTariffs from '@components/mixins/getTariffs'
+import getTracks from '@components/mixins/getTracks'
 
 export default {
   name: 'home',
@@ -106,7 +106,7 @@ export default {
   directives: {
     swiper: directive
   },
-  mixins: [getTariffs],
+  mixins: [getTariffs, getTracks],
   data () {
     return {
       swiperOptions: {
@@ -116,26 +116,12 @@ export default {
         pagination: {
           el: '.swiper-pagination'
         }
-      },
-      tracksFilters: {
-        'pagination[order]': 'rnd',
-        'update': 1
-      },
-      tracks: [],
-      // tarifs: []
+      }
     }
   },
   computed: {
     swiper() {
       return this.$refs.mySwiper.$swiper
-    },
-    tracksData() {
-      let formData = new FormData()
-      for (let key in this.tracksFilters) {
-		  	formData.append(`${key}`, this.tracksFilters[key])
-        // formData.append
-		  }
-      return formData
     },
     tariffsOptions() {
       let array = this.tarifs.map((tarif) => {
@@ -148,23 +134,9 @@ export default {
     }
   },
   methods: {
-    getTracks() {
-      let action = 'track/track/list_ajax'
-      let method = 'post'
-      Vue.http[method](action, this.tracksData)
-        .then(response => response.json())
-        .then(data => {
-          this.tracks = data.table.records
-          resolve()
-        }, data => {
-          reject()
-        })
-    }
   },
   mounted () {
     this.swiper.slideTo(1, 1000, false)
-    this.getTracks()
-    this.getTariffs()
   }
 }
 </script>

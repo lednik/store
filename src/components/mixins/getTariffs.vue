@@ -5,7 +5,7 @@ import {mapMutations} from 'vuex';
 export default {
   data () {
     return {
-        tarifs: []
+      tarifs: []
     }
   },
   computed: {
@@ -36,6 +36,7 @@ export default {
     }
   },
   mounted() {
+    this.getTariffs()
   }
 }
 </script>

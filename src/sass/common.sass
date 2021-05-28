@@ -8,6 +8,15 @@ body
     margin: 0
     overflow-x: hidden
 
+.element::-webkit-scrollbar
+  width: 0
+
+
+/*Убрать полосу прокрутки для всей страницы*/
+::-webkit-scrollbar 
+  width: 0
+
+
 a
     color: #fff
     text-decoration: none
@@ -53,6 +62,9 @@ img, svg
             @media (max-width: 940px)
                 font-size: vw(12,768)
                 padding: vw(9,768) vw(34,768) vw(11,768)
+            @media (max-width: 767px)
+                font-size: vw(12,320)
+                padding: vw(10,320) vw(34,320) vw(12,320)
         &:hover
             border: 1px solid #fff
     &__bg

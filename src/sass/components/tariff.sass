@@ -4,12 +4,16 @@
     display: flex
     box-shadow: 0px 5px 24px -5px rgba(0, 0, 0, 0.24)
     margin-bottom: 24px
+    transition: 0.3s
     @media (max-width: 1400px)
         width: 912px
     @media (max-width: 940px)
         width: vw(600,768)
     @media (max-width: 767px)
         width: vw(288, 320)
+    &:hover
+        transform: translateY(-8px)
+        box-shadow: 0px 12px 40px -12px rgba(0, 0, 0, 0.56)
     &__left
         padding: 40px 62px 64px 48px
         background-color: #262626
@@ -51,7 +55,7 @@
         @media (max-width: 1400px)
             font-size: 16px
             -webkit-line-clamp: 6
-            // height: 150px
+            height: 96px
         @media (max-width: 940px)
             -webkit-line-clamp: 7
             font-size: vw(14,768)
@@ -70,6 +74,8 @@
             font-size: 32px
         @media (max-width: 940px)
             font-size: vw(20,768)
+        @media (max-width: 767px)
+            font-size: vw(20,320)
     &__description
         font-size: 20px
         line-height: 150%
@@ -81,6 +87,9 @@
         @media (max-width: 940px)
             font-size: vw(14,768)
             margin-bottom: vw(24,768)
+        @media (max-width: 767px)
+            font-size: vw(14,320)
+            margin-bottom: vw(24,320)
         &_hidden
             opacity: 0
     &__img

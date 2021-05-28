@@ -1,6 +1,6 @@
 <template>
     <div class="menu">
-        <div class="menu__item">
+        <div v-link href="/about" class="menu__item">
             О проекте
         </div>
         <div v-link href="/tariffs" class="menu__item">
