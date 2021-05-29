@@ -20,7 +20,7 @@
               v-model="form.name.value"
               type="text"
               class="input"
-              placeholder="Ваше имя"
+              placeholder="Ваше имя*"
               :class="{'t-input__error' : form.name.error}"
               @input="form.name.error = false"
             >

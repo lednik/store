@@ -25,8 +25,8 @@
                 </div>
             </div>
             <div class="about__blur">
-                <img src="src\assets\images\about-1.png" alt="" class="about__img">
-                <img src="src\assets\images\about-1.png" alt="" class="about__img-blur">
+                <img src="src\assets\images\about-2.png" alt="" class="about__img">
+                <img src="src\assets\images\about-2.png" alt="" class="about__img-blur">
             </div>
         </div>
         <div class="home__content about__content">

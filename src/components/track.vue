@@ -7,10 +7,20 @@
     </div>
     <div class="track__info">
       <div class="track__name">
-        {{ name }}
+        <template v-if="name && name != ''">
+          {{ name }}
+        </template>
+        <template v-else>
+          bubuka music
+        </template>
       </div>
       <div class="track__author">
-        {{ author }}
+        <template v-if="author && author != ''">
+          {{ author }}
+        </template>
+        <template v-else>
+          Bubuka music
+        </template>
       </div>
     </div>
     <div class="track__time">

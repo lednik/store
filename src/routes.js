@@ -6,6 +6,7 @@ Vue.use(VueRouter);
 import Index from '@pages/index.vue';
 import Tariffs from '@pages/tariffs.vue';
 import About from '@pages/about.vue';
+import Contacts from '@pages/contacts.vue';
 // import Delivery from '@pages/delivery/index.js';
 // import Contacts from '@pages/contacts/index.js';
 // import Card from '@pages/card/index.vue';
@@ -30,6 +31,11 @@ const routes = [
         path: '/about',
         name: 'about',
         component: About
+    },
+    {
+        path: '/contacts',
+        name: 'contacts',
+        component: Contacts
     }
 ];
 

@@ -4,8 +4,9 @@
   <transition name="page">
     <router-view></router-view>
   </transition>
-  <Footer />
+  <Footer :class="{'footer_height': isPlayer}" />
   <Modal />
+  <Player v-if="isPlayer" />
 </div>
 </template>
 
@@ -13,16 +14,18 @@
 import Header from '@layout/header'
 import Footer from '@layout/footer'
 import Modal from '@components/modal'
+import Player from '@components/player'
 export default {
   name: 'app',
   components: {
     Header,
     Footer,
-    Modal
+    Modal,
+    Player
   },
   data () {
     return {
-      msg: 'Welcome to Your Vue.js App'
+      isPlayer: true
     }
   }
 }
