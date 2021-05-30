@@ -5,6 +5,17 @@
 .menu-enter, .menu-leave-to
     transform: translateX(100%)
 
+// появление снизу
+.player-enter-active, .player-leave-active
+    position: static
+    transition-duration: 0.4s
+    transition-timing-function: ease-in
+
+.player-enter, .player-leave-to
+    transform: translateY(100%)
+    // opacity: 0
+
+
 // появление справа налево
 .right-enter-active, .right-leave-active
     position: static

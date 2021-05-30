@@ -20,11 +20,12 @@
     <div class="home__content">
       <div class="home__list container">
         <track-cmp
-          v-for="item in tracks"
+          v-for="(item, index) in mocTracks"
           :id="item.id"
           :name="item.title"
           :author="item.artist"
           :time="item.duration"
+          @click="startPlaylist(index, mocTracks)"
           :key="item.id"
         />
       </div>
@@ -94,6 +95,7 @@ import { Swiper, SwiperSlide, directive } from 'vue-awesome-swiper'
 import "swiper/dist/css/swiper.css"
 import getTariffs from '@components/mixins/getTariffs'
 import getTracks from '@components/mixins/getTracks'
+import {mapMutations, mapGetters} from 'vuex';
 
 export default {
   name: 'home',
@@ -116,10 +118,41 @@ export default {
         pagination: {
           el: '.swiper-pagination'
         }
-      }
+      },
+      mocTracks: [
+        {
+          id: 1,
+          title: 'песня1',
+          artist: 'автор1',
+          duration: '24:34',
+          src: 'src/assets/images/sample1.mp3'
+        },
+        {
+          id: 2,
+          title: 'песня2',
+          artist: 'автор2',
+          duration: '24:34',
+          src: 'src/assets/images/sample2.mp3'
+        },
+        {
+          id: 3,
+          title: 'песня3',
+          artist: 'автор3',
+          duration: '24:34',
+          src: 'src/assets/images/sample3.mp3'
+        },
+        {
+          id: 4,
+          title: 'песня4',
+          artist: 'автор4',
+          duration: '24:34',
+          src: 'src/assets/images/sample4.mp3'
+        }
+      ]
     }
   },
   computed: {
+    ...mapGetters('playlist', ['getTrack']),
     swiper() {
       return this.$refs.mySwiper.$swiper
     },
@@ -134,6 +167,13 @@ export default {
     }
   },
   methods: {
+    ...mapMutations('playlist', ['setPlaylist']),
+    startPlaylist(index, traks) {
+      this.setPlaylist({
+        playlist: traks,
+        index
+      })
+    }
   },
   mounted () {
     this.swiper.slideTo(1, 1000, false)

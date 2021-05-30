@@ -4,13 +4,16 @@
   <transition name="page">
     <router-view></router-view>
   </transition>
-  <Footer :class="{'footer_height': isPlayer}" />
+  <Footer :class="{'footer_height': currentIndex != -1}" />
   <Modal />
-  <Player v-if="isPlayer" />
+  <transition name="player">
+    <Player v-if="currentIndex != -1" />
+  </transition>
 </div>
 </template>
 
 <script>
+import {mapGetters, mapMutations, mapState} from 'vuex';
 import Header from '@layout/header'
 import Footer from '@layout/footer'
 import Modal from '@components/modal'
@@ -22,6 +25,9 @@ export default {
     Footer,
     Modal,
     Player
+  },
+  computed: {
+    ...mapState('playlist', ['currentIndex']),
   },
   data () {
     return {
