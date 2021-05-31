@@ -16,9 +16,8 @@ export default {
     tracksData() {
         let formData = new FormData()
         for (let key in this.tracksFilters) {
-	    	formData.append(`${key}`, this.tracksFilters[key])
-          // formData.append
-	    }
+	    	  formData.append(`${key}`, this.tracksFilters[key])
+	      }
         return formData
     },
   },

@@ -32,7 +32,7 @@
         <div class="home__content about__content">
           <div class="about__list container">
             <track-cmp
-              v-for="(this.getTariffsitem,index) in tracks"
+              v-for="(item,index) in tracks"
               :id="item.id"
               :name="item.title"
               :author="item.artist"
@@ -78,7 +78,7 @@ export default {
     }
   },
   mounted() {
-    this.getTracks()
+    // this.getTracks()
   }
 }
 </script>

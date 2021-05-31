@@ -162,9 +162,19 @@
     &__volume
         display: flex
         align-items: center
+        @media (max-width: 940px)
+            position: relative
         @media (max-width: 767px)
             display: none
+        &-wrapper
+            @media (max-width: 940px)
+                padding: vw(16,768) vw(11,768)
+                background-color: #1A1A1A
+                position: absolute
+                bottom: calc(100% + 60px)
+                right: 0
         &-icon
+            cursor: pointer
             margin-right: 16px
             @media (max-width: 940px)
                 margin-right: 0
@@ -176,8 +186,10 @@
             cursor: pointer
             @media (max-width: 1400px)
                 width: 68px
-            @media (max-width: 940px)
-                display: none
+            // @media (max-width: 940px)
+            //     position: absolute
+            //     bottom: calc(100% + 60px)
+            //     right: 0
             &:hover
                 .player__volume-circle
                     opacity: 1
@@ -203,4 +215,6 @@
             background-color: #fff
             opacity: 0
             transition: 0.1s
+            @media (max-width: 940px)
+                opacity: 1
         

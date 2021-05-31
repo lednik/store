@@ -34,7 +34,11 @@ export default {
             }
         },
         playPrev(state) {
-            state.currentIndex--
+            if (state.playlist[state.currentIndex - 1]) {
+                state.currentIndex--
+            } else {
+                state.currentIndex = state.playlist.length - 1
+            }
         }
 	},
 	actions: {

@@ -1,12 +1,27 @@
 <template>
     <div class="menu">
-        <div v-link href="/about" class="menu__item">
+        <div
+            v-link
+            href="/about"
+            class="menu__item"
+            :class="{'inactive-route': $route.name == 'about'}"
+        >
             О проекте
         </div>
-        <div v-link href="/tariffs" class="menu__item">
+        <div
+            v-link
+            href="/tariffs"
+            class="menu__item"
+            :class="{'inactive-route': $route.name == 'tariffs'}"
+        >
             Тарифы
         </div>
-        <div class="menu__item">
+        <div
+            v-link
+            href="/contacts"
+            class="menu__item"
+            :class="{'inactive-route': $route.name == 'contacts'}"
+        >
             Контакты
         </div>
         <a href="tel:88007001191" class="menu__item">
@@ -25,6 +40,9 @@ export default {
   },
   methods: {
 
+  },
+  mounted() {
+      console.log('route', this.$route);
   }
 }
 </script>

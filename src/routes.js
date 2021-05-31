@@ -7,13 +7,6 @@ import Index from '@pages/index.vue';
 import Tariffs from '@pages/tariffs.vue';
 import About from '@pages/about.vue';
 import Contacts from '@pages/contacts.vue';
-// import Delivery from '@pages/delivery/index.js';
-// import Contacts from '@pages/contacts/index.js';
-// import Card from '@pages/card/index.vue';
-// import Profile from '@pages/profile/index.vue';
-// import Feedback from '@pages/feedback/index.js';
-// import E404 from '@pages/404/index.js';
-// import E403 from '@pages/403/index.js';
 
 
 const routes = [

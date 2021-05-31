@@ -1,7 +1,7 @@
 <template>
   <div class="track" @click="$emit('click')">
     <div class="track__button">
-      <svg v-if="playing" class="track__play track__icon" width="32" height="32" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <svg v-if="playing" class="track__stop track__icon" width="32" height="32" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">
       <rect x="6" y="2" width="6" height="28" fill="white"/>
       <rect x="20" y="2" width="6" height="28" fill="white"/>
       </svg>

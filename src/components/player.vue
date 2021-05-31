@@ -50,17 +50,28 @@
 			{{ track.duration }}
 		</div>
 		<div class="player__volume">
-			<div class="player__volume-icon">
+			<div class="player__volume-icon" @click="isVolumeBar = !isVolumeBar">
 				<svg width="31" height="31" viewBox="0 0 31 31" fill="none" xmlns="http://www.w3.org/2000/svg">
 				<path d="M18.0558 6.70779V4C23.1732 5.19325 27 9.88114 27 15.5C27 21.1189 23.1732 25.8067 18.0558 27V24.2922C21.7485 23.1645 24.4445 19.6568 24.4445 15.5C24.4445 11.3432 21.7485 7.83553 18.0558 6.70779Z" fill="white"/>
 				<path d="M4 11.5662V19.434H9.11095L15.4997 25.9904V5.00974L9.11095 11.5662H4Z" fill="white"/>
 				<path d="M21.2502 15.5C21.2502 13.1856 19.9469 11.1858 18.0558 10.222V20.7845C19.9469 19.8142 21.2502 17.8144 21.2502 15.5Z" fill="white"/>
 				</svg>
 			</div>
-			<div class="player__volume-bar" ref="valuebar" @click="changeValue">
-				<div ref="value" class="player__volume-progress">
-					<div class="player__volume-line">
-						<div class="player__volume-circle" />
+			<div class="player__volume-wrapper dt">
+				<div class="player__volume-bar" ref="valuebar" @click="changeValue">
+					<div ref="value" class="player__volume-progress">
+						<div class="player__volume-line">
+							<div class="player__volume-circle" />
+						</div>
+					</div>
+				</div>
+			</div>
+			<div v-if="isVolumeBar" class="player__volume-wrapper mb">
+				<div class="player__volume-bar" ref="valuebar" @click="changeValue">
+					<div ref="value" class="player__volume-progress">
+						<div class="player__volume-line">
+							<div class="player__volume-circle" />
+						</div>
 					</div>
 				</div>
 			</div>
@@ -96,7 +107,8 @@ export default {
 	data() {
         return {
             track: {},
-			currentTime: ''
+			currentTime: '',
+			isVolumeBar: false
         }
     },
   	methods: {

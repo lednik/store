@@ -1,15 +1,15 @@
 <template>
-<div class="footer">
-   <div class="footer__content container">
+<div class="footer hide-before-route">
+   <div class="footer__content container hide-before-route">
        <div class="footer__left">
             <div class="footer__nav">
-                <div v-link href="/about" class="footer__nav-item">
+                <div v-link href="/about" class="footer__nav-item" :class="{'inactive-route': $route.name == 'about'}">
                     О проекте
                 </div>
-                <div v-link href="/tariffs" class="footer__nav-item">
+                <div v-link href="/tariffs" class="footer__nav-item" :class="{'inactive-route': $route.name == 'tariffs'}">
                     Тарифы
                 </div>
-                <div class="footer__nav-item">
+                <div v-link href="/contacts" class="footer__nav-item" :class="{'inactive-route': $route.name == 'contacts'}">
                     Контакты
                 </div>
             </div>

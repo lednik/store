@@ -20,13 +20,13 @@
         </div>
         <div class="header__right">
             <div class="header__nav">
-                <div v-link href="/about" class="header__nav-item">
+                <div v-link href="/about" class="header__nav-item" :class="{'inactive-route': $route.name == 'about'}">
                   О проекте
                 </div>
-                <div v-link href="/tariffs" class="header__nav-item">
+                <div v-link href="/tariffs" class="header__nav-item" :class="{'inactive-route': $route.name == 'tariffs'}">
                   Тарифы
                 </div>
-                <div v-link href="/contacts" class="header__nav-item">
+                <div v-link href="/contacts" class="header__nav-item" :class="{'inactive-route': $route.name == 'contacts'}">
                   Контакты
                 </div>
             </div>
@@ -53,6 +53,12 @@ export default {
   components: {
     Burger,
     Menu
+  },
+  watch: {
+    '$route' (to, from) {
+      this.isMenu = false
+      this.body.style.overflowY = 'unset'
+    }
   },
   data () {
     return {
