@@ -67,7 +67,7 @@
         </div>
         <div class="contacts__info">
             <div class="contacts__img">
-                <img src="src/assets/images/contacts.png" alt="">
+                <img src="/src/assets/images/contacts.png" alt="">
             </div>
             <div class="contacts__title">
                 Наши контакты

@@ -2,8 +2,8 @@
   <div class="home page">
     <div class="heroblock container">
       <div class="heroblock__blur">
-        <img src="src/assets/images/heroblock.png" class="heroblock__img" alt="bubuka">
-        <img src="src/assets/images/heroblock.png" class="heroblock__img-blur" alt="bubuka-blur">
+        <img src="/src/assets/images/heroblock.png" class="heroblock__img" alt="bubuka">
+        <img src="/src/assets/images/heroblock.png" class="heroblock__img-blur" alt="bubuka-blur">
       </div>
       <div class="heroblock__info">
         <h1 class="heroblock__title">

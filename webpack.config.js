@@ -7,7 +7,7 @@ module.exports = {
   output: {
     path: path.resolve(__dirname, './dist'),
     publicPath: process.env.NODE_ENV === 'production'
-    ? '/market.new/front/dist'
+    ? '/front/dist'
     : '/dist/',
     filename: 'build.js'
   },
@@ -83,7 +83,8 @@ module.exports = {
       {
         test: /\.js$/,
         loader: 'babel-loader',
-        exclude: /node_modules/
+        exclude: [/node_modules(?![/|\\](bootstrap|foundation-sites|dom7|swiper))/],
+        // exclude: /node_modules/
       },
       {
         test: /\.(png|jpg|gif|svg)$/,

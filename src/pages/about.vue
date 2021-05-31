@@ -10,8 +10,8 @@
                 </div>
             </div>
             <div class="about__blur">
-                <img src="src\assets\images\about-1.png" alt="" class="about__img">
-                <img src="src\assets\images\about-1.png" alt="" class="about__img-blur">
+                <img src="/src/assets/images/about-1.png" alt="" class="about__img">
+                <img src="/src/assets/images/about-1.png" alt="" class="about__img-blur">
             </div>
         </div>
         <div class="about__block about__block_reverse">
@@ -25,8 +25,8 @@
                 </div>
             </div>
             <div class="about__blur">
-                <img src="src\assets\images\about-2.png" alt="" class="about__img">
-                <img src="src\assets\images\about-2.png" alt="" class="about__img-blur">
+                <img src="/src/assets/images/about-2.png" alt="" class="about__img">
+                <img src="/src/assets/images/about-2.png" alt="" class="about__img-blur">
             </div>
         </div>
         <div class="home__content about__content">
@@ -37,6 +37,7 @@
               :name="item.title"
               :author="item.artist"
               :time="item.duration"
+              @click="startPlaylist(index, tracks)"
               :key="item.id"
             />
           </div>
@@ -52,6 +53,7 @@ import Track from '@components/track'
 // import {mapState, mapMutations} from 'vuex';
 import getTracks from '@components/mixins/getTracks'
 // import tariff from '@components/tariff'
+import {mapMutations} from 'vuex';
 export default {
   name: 'about',
   mixins: [getTracks],
@@ -67,7 +69,13 @@ export default {
     //   ...mapState('modal', ['props']),
   },
   methods: {
-    // ...mapMutations('modal', ['closeModal']),
+    ...mapMutations('playlist', ['setPlaylist']),
+    startPlaylist(index, traks) {
+      this.setPlaylist({
+        playlist: traks,
+        index
+      })
+    }
   },
   mounted() {
     this.getTracks()

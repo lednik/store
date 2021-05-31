@@ -31,7 +31,7 @@
             </div>
         </div>
         <div class="tariff__img">
-            <img :src="`http://alexey${img}`" alt="tariff image">
+            <img :src="`${img}`" alt="tariff image">
         </div>
     </div>
 </template>
