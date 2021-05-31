@@ -7,7 +7,7 @@
             <div class="input__wrapper">
                 <transition name="fade">
                   <div v-if="form.name.error" class="contacts__error input__error">
-                    Неверное имя
+                    Введите Ваше имя
                   </div>
                 </transition>
                 <input
@@ -21,7 +21,7 @@
             <div class="input__wrapper">
                 <transition name="fade">
                   <div v-if="form.phone.error" class="contacts__error input__error">
-                    Неверный номер
+                    Неверный номер телефона
                   </div>
                 </transition>
                 <input
@@ -49,8 +49,8 @@
             </div>
             <div class="input__wrapper">
                 <transition name="fade">
-                  <div v-if="form.email.error" class="contacts__error input__error">
-                    Неверный e-mail
+                  <div v-if="form.question.error" class="contacts__error input__error">
+                    Введите текст сообщения
                   </div>
                 </transition>
                 <textarea

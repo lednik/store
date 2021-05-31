@@ -9,6 +9,15 @@ export default {
     }
   },
   computed: {
+    tariffsOptions() {
+      let array = this.tarifs.map((tarif) => {
+        return {
+          id: tarif.id,
+          name: `Тариф «${tarif.name}»`
+        }
+      });
+      return array
+    }
   },
   methods: {
     ...mapMutations('modal', ['showModal']),

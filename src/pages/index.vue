@@ -12,7 +12,7 @@
         <p class="heroblock__text">
           Подходит продакшн-студиям, event-агентствам, театрам, радио, киностудиям. Создавай качественный контент с лицензионной музыкой.
         </p>
-        <div class="heroblock__button button__bg button">
+        <div class="heroblock__button button__bg button" @click="toRequestFirst">
           Оставить заявку
         </div>
       </div>
@@ -29,9 +29,9 @@
           :key="item.id"
         />
       </div>
-      <div class="home__catalog button__border button">
+      <a href="https://enter.yoga/catalog/" target="_blank" class="home__catalog button__border button">
         Перейти в каталог
-      </div>
+      </a>
       <div class="home__svg">
         <svg width="1920" height="264" viewBox="0 0 1920 264" fill="none" xmlns="http://www.w3.org/2000/svg">
         <g opacity="0.12">
@@ -155,15 +155,6 @@ export default {
     ...mapGetters('playlist', ['getTrack']),
     swiper() {
       return this.$refs.mySwiper.$swiper
-    },
-    tariffsOptions() {
-      let array = this.tarifs.map((tarif) => {
-        return {
-          id: tarif.id,
-          name: `Тариф «${tarif.name}»`
-        }
-      });
-      return array
     }
   },
   methods: {
@@ -173,6 +164,15 @@ export default {
         playlist: traks,
         index
       })
+    },
+    toRequestFirst() {
+      this.showModal(
+        {
+          name: 'request',
+          message: this.tariffsOptions[0].name,
+          list: this.tariffsOptions
+        }
+      )
     }
   },
   mounted () {

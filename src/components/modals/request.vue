@@ -13,7 +13,7 @@
         <div class="input__wrapper">
             <transition name="fade">
               <div v-if="form.name.error" class="input__error">
-                Неверное имя
+                Введите Ваше имя
               </div>
             </transition>
             <input
@@ -28,7 +28,7 @@
         <div class="input__wrapper">
             <transition name="fade">
               <div v-if="form.phone.error" class="input__error">
-                Неверный номер
+                Неверный номер телефона
               </div>
             </transition>
             <input
@@ -87,11 +87,11 @@
             >
         </div>
         <div class="input__wrapper">
-            <transition name="fade">
+            <!-- <transition name="fade">
               <div v-if="form.company.error" class="input__error">
                 Ошибки.нет
               </div>
-            </transition>
+            </transition> -->
             <input
               v-model="form.company.value"
               type="text"

@@ -7,8 +7,8 @@ export default {
     return {
         tracks: [],
         tracksFilters: {
-            // 'pagination[order]': 'rnd',
-            'update': 1
+          'pagination[order]': 'rnd',
+          'update': 1
         },
     }
   },

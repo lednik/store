@@ -1,7 +1,7 @@
 <template>
     <div class="select" :class="{'select_active': isOptions}">
         <div 
-            @click="showOptions"
+            @click="toggleOptions"
             class="select__value select__item"
             v-click-outside="hideOptions"
         >
@@ -46,9 +46,9 @@ export default {
             this.value = value
             this.$emit('change-value', value)
         },
-        showOptions() {
+        toggleOptions() {
             console.log('showOptions');
-            this.isOptions = true
+            this.isOptions = !this.isOptions
         },
         hideOptions() {
             this.isOptions = false

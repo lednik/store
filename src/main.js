@@ -54,59 +54,13 @@ new Vue({
   render: h => h(App)
 })
 
-router.beforeEach((to, from, next) => {    
-  // window.removeEventListener('scroll', onScrollAnimate);
+router.beforeEach((to, from, next) => {
   let hideBeforeRouteElements = document.querySelectorAll('.hide-before-route')
   hideBeforeRouteElements.forEach(el => el.classList.add("hiddenForRoute"))
   setTimeout(()=>{
       hideBeforeRouteElements.forEach(el => el.classList.remove("hiddenForRoute"))
   },600)
-  // linkRemoveActions();
   next();
 })
-
-// const handleClick = (e) => {
-//   e.preventDefault();
-//   // const ev = window.e || e;
-//   const path = e.path || (e.composedPath && e.composedPath());
-//   let link = e.target
-//   path.some((item)=>{
-//       if (item.classList&&item.classList.contains('js-router-link')) {
-//           link = item;
-//           return true
-//       }
-//       return false
-//   })
-//   linkAction(e, link)
-// }
-
-// router.afterEach((to, from) => {
-//   // ...
-//   setTimeout(() => {
-//       onScrollAnimate();
-//       window.addEventListener('scroll', onScrollAnimate);
-//   }, 1100);
-//   // ...
-//   // Навешивание сбытий
-//   setTimeout(() => {
-//       linkAddActions()
-//       window.content = undefined
-//   }, 200);
-//   setTimeout(() => {
-//       store.commit('curtain/Show')
-//   }, 600);
-// })
-
-// function linkAddActions(){
-//   document.querySelectorAll('.js-router-link').forEach(item => {
-//       item.addEventListener('click', handleClick);
-//   });
-// }
-
-// function linkRemoveActions(){
-//   document.querySelectorAll('.js-router-link').forEach(item => {
-//       item.removeEventListener('click', handleClick);
-//   });
-// }
 
 

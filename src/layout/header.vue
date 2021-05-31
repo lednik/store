@@ -33,9 +33,9 @@
             <a href="tel:88007001191" class="header__phone">
               8 800 700 11 91
             </a>
-            <div class="header__button button__border button">
-                Перейти в каталог
-            </div>
+            <a href="https://enter.yoga/catalog/" target="_blank" class="header__button button__border button">
+              Перейти в каталог
+            </a>
             <Burger @burger-click="toggleMenu" :is-open="isMenu" />
             <transition name="menu">
               <Menu v-if="isMenu" />
