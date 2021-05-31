@@ -33,6 +33,9 @@ export default {
     return {
       isPlayer: true
     }
+  },
+  mounted() {
+    console.log('env', process.env.VUE_APP_ROOT_API);
   }
 }
 </script>

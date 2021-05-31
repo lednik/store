@@ -32,7 +32,7 @@
         <div class="home__content about__content">
           <div class="about__list container">
             <track-cmp
-              v-for="item in tracks"
+              v-for="(this.getTariffsitem,index) in tracks"
               :id="item.id"
               :name="item.title"
               :author="item.artist"

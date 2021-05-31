@@ -38,6 +38,10 @@ import {mapGetters, mapMutations, mapState} from 'vuex';
 export default {
   name: 'gradient-bg-button',
   props: ['id', 'name', 'author', 'time'],
+  computed: {
+    ...mapState('playlist', ['isPlaying', 'currentIndex']),
+    ...mapGetters('playlist', ['getTrack']),
+  },
   watch: {
     'isPlaying': function () {
       if (this.getTrack.id == this.id && this.isPlaying == true) {
@@ -53,10 +57,6 @@ export default {
         this.playing = false
       }
     }
-  },
-  computed: {
-    ...mapState('playlist', ['isPlaying', 'currentIndex']),
-    ...mapGetters('playlist', ['getTrack']),
   },
   data () {
     return {
