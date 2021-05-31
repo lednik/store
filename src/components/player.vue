@@ -83,7 +83,7 @@ export default {
 	watch: {
 		'currentIndex': function () {
 			this.track = Object.assign({}, this.getTrack)
-			this.$refs.player.src = this.getTrack.src
+			this.$refs.player.src = this.getTrack.track_url
 			this.play()
 		},
 		'waitingToggle': function () {
@@ -168,7 +168,7 @@ export default {
 	},
 	mounted() {
 		this.track = Object.assign({}, this.getTrack)
-		this.$refs.player.src = this.getTrack.src
+		this.$refs.player.src = this.getTrack.track_url
 		this.play()
 		this.$refs.player.ontimeupdate = () => {
 			this.refreshProgressBar()

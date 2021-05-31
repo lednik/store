@@ -7,7 +7,7 @@ export default {
     return {
         tracks: [],
         tracksFilters: {
-            'pagination[order]': 'rnd',
+            // 'pagination[order]': 'rnd',
             'update': 1
         },
     }
@@ -31,6 +31,7 @@ export default {
           .then(response => response.json())
           .then(data => {
             this.tracks = data.table.records
+            console.log(data.table.records);
             resolve()
           }, data => {
             reject()
