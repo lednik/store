@@ -20,6 +20,12 @@ export default {
                 state.currentIndex = data.index    
             }
         },
+        closePlaylist(state) {
+            state.currentIndex = -1
+            state.playlist = []
+            state.waitingToggle = false
+            state.isPlaying = false
+        },
         setWaitingToggle(state) {
             state.waitingToggle = false
         },

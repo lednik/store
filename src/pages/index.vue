@@ -24,7 +24,7 @@
           :id="item.id"
           :name="item.title"
           :author="item.artist"
-          :time="item.duration"
+          :time="item.duration_str"
           @click="startPlaylist(index, tracks)"
           :key="item.id"
         />
@@ -124,29 +124,29 @@ export default {
           id: 1,
           title: 'песня1',
           artist: 'автор1',
-          duration: '24:34',
-          src: 'src/assets/images/sample1.mp3'
+          duration_str: '24:34',
+          track_url: 'src/assets/images/sample1.mp3'
         },
         {
           id: 2,
           title: 'песня2',
           artist: 'автор2',
-          duration: '24:34',
-          src: 'src/assets/images/sample2.mp3'
+          duration_str: '24:34',
+          track_url: 'src/assets/images/sample2.mp3'
         },
         {
           id: 3,
           title: 'песня3',
           artist: 'автор3',
-          duration: '24:34',
-          src: 'src/assets/images/sample3.mp3'
+          duration_str: '24:34',
+          track_url: 'src/assets/images/sample3.mp3'
         },
         {
           id: 4,
           title: 'песня4',
           artist: 'автор4',
-          duration: '24:34',
-          src: 'src/assets/images/sample4.mp3'
+          duration_str: '24:34',
+          track_url: 'src/assets/images/sample4.mp3'
         }
       ]
     }

@@ -6,7 +6,7 @@
     width: 100vw
     padding: 26px 0
     background-color: #1A1A1A
-    z-index: 10
+    z-index: 1000
     -webkit-touch-callout: none
     -webkit-user-select: none
     -khtml-user-select: none
@@ -18,8 +18,10 @@
     @media (max-width: 940px)
         padding: vw(30,768) vw(24,768)
     @media (max-width: 767px)
-        padding: vw(16,320)
+        padding: 0
     &__content
+        position: relative
+        z-index: 0
         width: 1223px
         margin: 0 auto
         display: flex
@@ -28,6 +30,9 @@
             width: 912px
         @media (max-width: 940px)
             width: 100%
+        @media (max-width: 767px)
+            padding: vw(16,320)
+            justify-content: space-between
 
     &__controls
         display: flex
@@ -37,6 +42,8 @@
             margin-right: 28px
         @media (max-width: 940px)
             margin-right: vw(29,768)
+        @media (max-width: 767px)
+            margin-right: 0
     &__control
         cursor: pointer
         &:not(:last-child)
@@ -45,6 +52,8 @@
                 margin-right: 24px
             @media (max-width: 940px)
                 margin-right: vw(12,768)
+            @media (max-width: 767px)
+                margin-right: 0
             
     &__info
         width: 220px
@@ -107,7 +116,12 @@
             width: vw(120,768)
             margin-right: vw(16,768)
         @media (max-width: 767px)
-            display: none
+            position: absolute
+            width: 100vw
+            height: 2px
+            transform: translateX(vw(-16,320))
+            bottom: 100%
+            pointer-events: none
         &:hover
             .player__bar-circle
                 opacity: 1
@@ -136,6 +150,8 @@
             opacity: 0
             transition: 0.1s
             pointer-events: none
+            @media (max-width: 767px)
+                display: none
     &__total
         width: 57px
         margin-right: 72px
@@ -217,4 +233,104 @@
             transition: 0.1s
             @media (max-width: 940px)
                 opacity: 1
-        
+.player-mobile
+    position: fixed
+    // display: flex
+    width: 100vw
+    height: 100vh
+    top: 0
+    left: 0
+    background-color: #202020
+    z-index: 1000
+    padding: vh(30) vh(16) vh(42)
+    &__top
+        display: flex
+        justify-content: space-between
+        align-items: center
+        margin-bottom: vh(32)
+    &__hide
+        width: vw(28,320)
+        height: vw(20,320)
+        svg
+            path
+                stroke: #fff
+    &__close
+        width: vw(20,320)
+        height: vw(20,320)
+        svg
+            path
+                stroke: #fff
+    &__poster
+        width: vw(212,320)
+        height: vw(212,320)
+        border-radius: 50%
+        overflow: hidden
+        background-color: #2B2B2B
+        margin: 0 auto vh(48)
+        box-shadow: 0px 12px 40px -12px rgba(0, 0, 0, 0.56)
+        display: flex
+        align-items: center
+        justify-content: center
+        svg
+            width: vw(51,320)
+            height: vw(57,320)
+            transform: translateX(vw(-4,320))
+        img
+            object-fit: cover
+    &__name
+        width: 100%
+        overflow: hidden
+        white-space: nowrap
+        text-overflow: ellipsis
+        font-family: $bold
+        font-size: vw(16,320)
+        line-height: 130%
+        margin-bottom: vh(4)
+    &__author
+        width: 100%
+        overflow: hidden
+        white-space: nowrap
+        text-overflow: ellipsis
+        font-family: $mid
+        font-size: vw(12,320)
+        line-height: 130%
+        margin-bottom: vh(24)
+    &__times
+        display: flex
+        justify-content: space-between
+        font-family: $mid
+        font-size: vw(16,320)
+        line-height: 130%
+        letter-spacing: 0.02em
+        margin-bottom: vh(24)
+
+    &__current
+        color: #fff
+    &__total
+        color: #757575
+    &__controls
+        display: flex
+        align-items: center
+        justify-content: center
+    &__control
+        width: vw(40,320)
+        height: vw(40,320)
+        &:not(:last-child)
+            margin-right: vw(32,320)
+    &__bar
+        width: vw(288,320)
+        margin: 0 auto vh(20)
+        .player__bar
+            width: 100%
+            position: static
+            pointer-events: unset
+            height: vw(5,320)
+            transform: translateX(0)
+            &-circle
+                display: block
+    // &__prev
+    //     width: vw(40,320)
+    //     height: vw(40,320)
+    // &__next
+    //     width: vw(40,320)
+    //     height: vw(40,320)

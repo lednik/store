@@ -1,6 +1,77 @@
 <template>
 <div class="player">
-	<div class="player__content">
+	<transition name="player">
+	<div v-show="fullPlayer" class="player-mobile mb">
+		<div class="player-mobile__top">
+			<div @click="toggleFullPlayer" class="player-mobile__hide">
+				<svg width="28" height="20" viewBox="0 0 28 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+					<path d="M4 5L14 15L24 5" stroke="white" stroke-width="2"/>
+				</svg>
+			</div>
+			<div class="player-mobile__close" @click="closePlayer">
+				<svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+				<path d="M1 1L19 19M19 1L1 19" stroke="white" stroke-width="2" stroke-linecap="round"/>
+				</svg>
+			</div>
+		</div>
+		<div class="player-mobile__poster">
+			<svg v-if="!track.album_poster_url" width="53" height="60" viewBox="0 0 53 60" fill="none" xmlns="http://www.w3.org/2000/svg">
+				<path d="M52 13.2477V2L18.7872 6.77855V18.0262M52 13.2477L18.7872 18.0262M52 13.2477V46.9908M18.7872 18.0262V51.7693M18.7872 51.7693C18.7872 55.7627 14.8054 59 9.89362 59C4.98181 59 1 55.7627 1 51.7693C1 47.776 4.98181 44.5387 9.89362 44.5387C14.8054 44.5387 18.7872 47.776 18.7872 51.7693ZM52 46.9908C52 50.9842 48.0182 54.2215 43.1064 54.2215C38.1946 54.2215 34.2128 50.9842 34.2128 46.9908C34.2128 42.9974 38.1946 39.7601 43.1064 39.7601C48.0182 39.7601 52 42.9974 52 46.9908Z" stroke="white" stroke-width="2"/>
+			</svg>
+			<img v-else :src="track.album_poster_url" alt="poster">
+		</div>
+		<div class="player-mobile__name">
+			{{ track.title }}
+		</div>
+		<div class="player-mobile__author">
+			{{ track.artist }}
+		</div>
+		<div class="player-mobile__bar">
+			<div class="player__bar" ref="progressbarmobile" @click="moveTrackMobile">
+				<div class="player__bar-progress" ref="progressmobile">
+					<div class="player__bar-line">
+						<div class="player__bar-circle" />
+					</div>
+				</div>
+			</div>
+		</div>
+		<div class="player-mobile__times">
+			<div class="player-mobile__current">
+				{{ currentTime }}
+			</div>
+			<div class="player-mobile__total">
+				{{ track.duration_str }}
+			</div>
+		</div>
+		<div class="player-mobile__controls">
+			<div class="player-mobile__control player-mobile__prev scale" @click="playPrev">
+				<svg width="40" height="40" viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg">
+				<path d="M27 30V10L13 19.7872L27 30Z" fill="white"/>
+				<rect width="2" height="19" transform="matrix(-1 0 0 1 15 10.5)" fill="white"/>
+				</svg>
+			</div>
+			<div
+				class="player-mobile__control player-mobile__play scale"
+				@click="toggleTrack"
+			>
+				<svg v-if="!isPlaying" width="32" height="32" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">
+				<path d="M4 30V2L32 15.7021L4 30Z" fill="white"/>
+				</svg>
+				<svg v-else width="32" height="32" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">
+				<rect x="6" y="2" width="6" height="28" fill="white"/>
+				<rect x="20" y="2" width="6" height="28" fill="white"/>
+				</svg>
+			</div>
+			<div class="player-mobile__control player-mobile__next scale" @click="playNext">
+				<svg width="40" height="40" viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg">
+				<path d="M13 30V10L27 19.7872L13 30Z" fill="white"/>
+				<rect x="25" y="10.5" width="2" height="19" fill="white"/>
+				</svg>
+			</div>
+		</div>
+	</div>
+	</transition>
+	<div @click="toggleFullPlayer" class="player__content">
 		<div class="player__info">
 			<div class="player__name">
 				{{ track.title }}
@@ -18,7 +89,7 @@
 			</div>
 			<div
 				class="player__control player__play scale"
-				@click="toggleTrack"
+				@click.stop="toggleTrack"
 			>
 				<svg v-if="!isPlaying" width="32" height="32" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">
 				<path d="M4 30V2L32 15.7021L4 30Z" fill="white"/>
@@ -47,7 +118,7 @@
 			</div>
 		</div>
 		<div class="player__total">
-			{{ track.duration }}
+			{{ track.duration_str }}
 		</div>
 		<div class="player__volume">
 			<div class="player__volume-icon" @click="isVolumeBar = !isVolumeBar">
@@ -85,7 +156,7 @@
 
 <script>
 import {mapGetters, mapMutations, mapState} from 'vuex';
-import Vue from 'vue'
+// import Vue from 'vue'
 export default {
 	computed: {
 		...mapState('playlist', ['currentIndex', 'isPlaying', 'waitingToggle']),
@@ -108,11 +179,13 @@ export default {
         return {
             track: {},
 			currentTime: '',
-			isVolumeBar: false
+			isVolumeBar: false,
+			fullPlayer: false,
+			isMobile: false
         }
     },
   	methods: {
-		...mapMutations('playlist', ['playNext','playPrev', 'setIsPlaying', 'setWaitingToggle']),
+		...mapMutations('playlist', ['playNext','playPrev', 'setIsPlaying', 'setWaitingToggle', 'closePlaylist']),
 		toggleTrack() {
 			if(this.$refs.player.paused) {
 				this.play()
@@ -127,6 +200,16 @@ export default {
 			let value = (x / width)
 			return value
 		},
+		toggleFullPlayer() {
+			if (this.isMobile) {
+				document.body.style.overflowY= this.fullPlayer? 'auto' : 'hidden'
+				this.fullPlayer = !this.fullPlayer
+			}
+		},
+		closePlayer() {
+			this.pause()
+			this.closePlaylist()
+		},
 		changeValue(e) {
 			let value = this.getClickPosition(e, 'valuebar')
 			console.log(value);
@@ -134,32 +217,34 @@ export default {
 			this.$refs.player.volume = value
 			this.$refs.value.style.width = percent + '%';
 		},
-		moveTrack(e) {
-			let value = this.getClickPosition(e, 'progressbar')
-			let percent = value * 100
+		moveTrackMobile(e) {
+			let value = this.getClickPosition(e, 'progressbarmobile')
+			// let percent = value * 100
     		let allTime = this.$refs.player.duration;
     		let time = Math.floor(allTime * (value));
     		this.$refs.player.currentTime = time;
-			this.$refs.progress.style.transition = '0s';
-    		this.$refs.progress.style.width = percent + '%';
-			setTimeout(() => {
-				this.$refs.progress.style.transition = '0.5s';
-			}, 100)
+		},
+		moveTrack(e) {
+			let value = this.getClickPosition(e, 'progressbar')
+			// let percent = value * 100
+    		let allTime = this.$refs.player.duration;
+    		let time = Math.floor(allTime * (value));
+    		this.$refs.player.currentTime = time;
+			// this.$refs.progress.style.transition = '0s';
+    		// this.$refs.progress.style.width = percent + '%';
+			// setTimeout(() => {
+			// 	this.$refs.progress.style.transition = '0.5s';
+			// }, 100)
     	},
-		// toNextTrack() {
-
-		// },
 		progressBarWidth() {
 			return this.$refs.player.currentTime / this.$refs.player.duration * 100
 		},
 		play() {
 			this.setIsPlaying(true)
-			// this.playing = true
 			this.$refs.player.play()
 		},
 		pause() {
 			this.setIsPlaying(false)
-			// this.playing = false
 			this.$refs.player.pause()
 		},
 		secondsToTime(seconds) {
@@ -173,17 +258,24 @@ export default {
 			var sDisplay = (s < 10 ? '0' : '') + s
 			return hDisplay + mDisplay + sDisplay; 
 		},
-		refreshProgressBar() {
-			this.currentTime = this.secondsToTime(this.$refs.player.currentTime)
-			this.$refs.progress.style.width = `${this.progressBarWidth()}%`
+		refreshProgressBar(ref) {
+			if(this.$refs[ref]) {
+				this.currentTime = this.secondsToTime(this.$refs.player.currentTime)
+				this.$refs[ref].style.width = `${this.progressBarWidth()}%`	
+			}
+			
 		}
 	},
 	mounted() {
+		if (window.innerWidth < 768) {
+			this.isMobile = true
+		}
 		this.track = Object.assign({}, this.getTrack)
 		this.$refs.player.src = this.getTrack.track_url
 		this.play()
 		this.$refs.player.ontimeupdate = () => {
-			this.refreshProgressBar()
+			this.refreshProgressBar('progress')
+			this.refreshProgressBar('progressmobile')
 		}
 		this.$refs.player.onended = () => {
 			this.playNext()
