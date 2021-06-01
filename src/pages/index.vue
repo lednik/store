@@ -77,7 +77,7 @@
             :name="item.name"
             :id="item.id"
             :altName="item.altName"
-            :about="item.description"
+            :about="item.description_small"
             :price="item.price"
             @request="toRequest"
           />

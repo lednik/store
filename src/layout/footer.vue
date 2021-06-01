@@ -22,8 +22,8 @@
                 </a>
             </div>
             <div class="footer__files">
-                <a class="footer__file" href="#">Политика безопасности</a>
-                <a class="footer__file" href="#">Использование файлов «Cookies»</a>
+                <a class="footer__file" href="/src/assets/documents/Personal_data_using.pdf" target="_blank">Политика безопасности</a>
+                <a class="footer__file" href="/src/assets/documents/Using_cookies.pdf" target="_blank">Использование файлов «Cookies»</a>
            </div>
         </div>
         <div class="footer__right">

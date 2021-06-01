@@ -8,7 +8,7 @@
     </div>
     <div class="tarif-card__price">
       <template v-if="price != 0">
-        {{ price }}
+        {{ price }} ₽
       </template>
       <template v-else>
         ~ ₽

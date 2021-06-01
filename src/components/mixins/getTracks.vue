@@ -8,6 +8,7 @@ export default {
         tracks: [],
         tracksFilters: {
           'pagination[order]': 'rnd',
+          'pagination[filters][thumb_file_id_isnotnull]': true,
           'update': 1
         },
     }

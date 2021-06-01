@@ -9,7 +9,7 @@
             </div>
             <div class="tariff__price">
                 <template v-if="price != 0">
-                    {{ price }}
+                    {{ price }} ₽
                 </template>
                 <template v-else>
                     ~ ₽

@@ -21,12 +21,12 @@ Vue.use(vClickOutside)
 Vue.directive('link', {
   // Когда привязанный элемент вставлен в DOM...
   bind: function (el, binding, vnode) {
-    el.addEventListener('click', (e)=>{
+    el.addEventListener('click', (e) => {
       linkAction(e, el)
     })
   },
   unbind: function (el, binding, vnode) {
-    el.removeEventListener('click', (e)=>{
+    el.removeEventListener('click', (e) => {
       linkAction(e, el)
     })
   }
@@ -47,13 +47,7 @@ function linkAction(e, item) {
   }
 }
 
-new Vue({
-  el: '#app',
-  router,
-  store,
-  render: h => h(App)
-})
-
+// прячем элементы при анимации смены страницы
 router.beforeEach((to, from, next) => {
   let hideBeforeRouteElements = document.querySelectorAll('.hide-before-route')
   hideBeforeRouteElements.forEach(el => el.classList.add("hiddenForRoute"))
@@ -63,4 +57,9 @@ router.beforeEach((to, from, next) => {
   next();
 })
 
-
+new Vue({
+  el: '#app',
+  router,
+  store,
+  render: h => h(App)
+})
