@@ -103,7 +103,7 @@
         </div>
     </div>
     <div class="request__files">
-        Оставляя заявку, вы соглашаетесь с <a class="request__file" href="#">условиями пользовательского соглашения</a> и <a class="request__file" href="#"> политикой конфиденциальности</a>
+        Оставляя заявку, вы соглашаетесь с <a class="request__file" href="/src/assets/documents/Personal_data_using.pdf" target="_blank">условиями пользовательского соглашения</a> и <a class="request__file" href="/src/assets/documents/Personal_data_using.pdf" target="_blank"> политикой конфиденциальности</a>
     </div>
     <div @click="sendForm" class="request__button modal__button">
         Подтвердить

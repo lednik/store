@@ -25,9 +25,9 @@
                 >
                     Оставить заявку
                 </div>
-                <div class="tariff__catalog button__border button__border_small button">
+                <a href="https://enter.yoga/catalog/" target="_blank" class="tariff__catalog button__border button__border_small button">
                     В каталог
-                </div>
+                </a>
             </div>
         </div>
         <div class="tariff__img">
