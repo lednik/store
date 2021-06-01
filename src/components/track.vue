@@ -44,14 +44,15 @@ export default {
   },
   watch: {
     'isPlaying': function () {
-      if (this.getTrack.id == this.id && this.isPlaying == true) {
+      console.log('isPlaying');
+      if (this.getTrack && this.getTrack.id == this.id && this.isPlaying == true) {
         this.playing = true
       } else {
         this.playing = false
       }
     },
     'currentIndex': function () {
-      if (this.getTrack.id == this.id && this.isPlaying == true) {
+      if (this.getTrack && this.getTrack.id == this.id && this.isPlaying == true) {
         this.playing = true
       } else {
         this.playing = false

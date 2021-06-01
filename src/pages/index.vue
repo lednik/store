@@ -20,12 +20,12 @@
     <div class="home__content">
       <div class="home__list container">
         <track-cmp
-          v-for="(item, index) in tracks"
+          v-for="(item, index) in mocTracks"
           :id="item.id"
           :name="item.title"
           :author="item.artist"
           :time="item.duration_str"
-          @click="startPlaylist(index, tracks)"
+          @click="startPlaylist(index, mocTracks)"
           :key="item.id"
         />
       </div>

@@ -202,12 +202,13 @@ export default {
 		},
 		toggleFullPlayer() {
 			if (this.isMobile) {
-				document.body.style.overflowY= this.fullPlayer? 'auto' : 'hidden'
+				document.body.style.overflowY = this.fullPlayer? 'auto' : 'hidden'
 				this.fullPlayer = !this.fullPlayer
 			}
 		},
 		closePlayer() {
 			this.pause()
+			document.body.style.overflowY = 'auto'
 			this.closePlaylist()
 		},
 		changeValue(e) {
