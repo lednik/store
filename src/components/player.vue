@@ -1,5 +1,11 @@
 <template>
 <div class="player">
+	<div class="arrow" @click="closePlayer">
+        <div class="arrow-content">
+            <div class="arrow__line arrow__line_first" />
+            <div class="arrow__line arrow__line_second" />
+        </div>
+    </div>
 	<transition name="player">
 	<div v-show="fullPlayer" class="player-mobile mb">
 		<div class="player-mobile__top">

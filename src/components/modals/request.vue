@@ -56,7 +56,7 @@
               @input="form.email.error = false"
             >
         </div>
-        <div class="input__wrapper">
+        <!-- <div class="input__wrapper">
             <transition name="fade">
               <div v-if="form.country.error" class="input__error">
                 Введите страну
@@ -70,7 +70,7 @@
               :class="{'t-input__error' : form.country.error}"
               @input="form.country.error = false"
             >
-        </div>
+        </div> -->
         <div class="input__wrapper">
             <transition name="fade">
               <div v-if="form.city.error" class="input__error">
@@ -86,12 +86,7 @@
               @input="form.city.error = false"
             >
         </div>
-        <div class="input__wrapper">
-            <!-- <transition name="fade">
-              <div v-if="form.company.error" class="input__error">
-                Ошибки.нет
-              </div>
-            </transition> -->
+        <!-- <div class="input__wrapper">
             <input
               v-model="form.company.value"
               type="text"
@@ -100,7 +95,7 @@
               :class="{'t-input__error' : form.company.error}"
               @input="form.company.error = false"
             >
-        </div>
+        </div> -->
     </div>
     <div class="request__files">
         Оставляя заявку, вы соглашаетесь с <a class="request__file" href="/src/assets/documents/Personal_data_using.pdf" target="_blank">условиями пользовательского соглашения</a> и <a class="request__file" href="/src/assets/documents/Personal_data_using.pdf" target="_blank"> политикой конфиденциальности</a>
@@ -135,18 +130,18 @@ export default {
                 value: '',
                 error: false
             },
-            country: {
-                value: '',
-                error: false
-            },
+            // country: {
+            //     value: '',
+            //     error: false
+            // },
             city: {
                 value: '',
                 error: false
             },
-            company: {
-                value: '',
-                error: false
-            },
+            // company: {
+            //     value: '',
+            //     error: false
+            // },
             tariff_id: {
               value: ''
             }
@@ -253,12 +248,12 @@ export default {
             this.form.email.error = true
             valid = false
         }
-        if (!this.form.country.value ||
-            this.form.country.value === ''
-        ) {
-            this.form.country.error = true
-            valid = false
-        }
+        // if (!this.form.country.value ||
+        //     this.form.country.value === ''
+        // ) {
+        //     this.form.country.error = true
+        //     valid = false
+        // }
         if (!this.form.city.value ||
             this.form.city.value === ''
         ) {

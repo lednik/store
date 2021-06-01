@@ -10,7 +10,7 @@
           Легальная музыкальная библиотека
         </h1>
         <p class="heroblock__text">
-          Подходит продакшн-студиям, event-агентствам, театрам, радио, киностудиям. Создавай качественный контент с лицензионной музыкой.
+          Подходит продакшн-студиям, event-агентствам, театрам, радио, TV, киностудиям. Создавай качественный контент с лицензионной музыкой.
         </p>
         <div class="heroblock__button button__bg button" @click="toRequestFirst">
           Оставить заявку
@@ -20,12 +20,12 @@
     <div class="home__content">
       <div class="home__list container">
         <track-cmp
-          v-for="(item, index) in mocTracks"
+          v-for="(item, index) in tracks"
           :id="item.id"
           :name="item.title"
           :author="item.artist"
           :time="item.duration_str"
-          @click="startPlaylist(index, mocTracks)"
+          @click="startPlaylist(index, tracks)"
           :key="item.id"
         />
       </div>

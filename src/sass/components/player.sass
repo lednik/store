@@ -19,6 +19,13 @@
         padding: vw(30,768) vw(24,768)
     @media (max-width: 767px)
         padding: 0
+    .arrow
+        right: 13px
+        top: 13px
+        @media (max-width: 767px)
+            display: none
+        &__line
+            background-color: #757575
     &__content
         position: relative
         z-index: 0
@@ -190,6 +197,8 @@
                 bottom: calc(100% + 60px)
                 right: 0
         &-icon
+            width: 31px
+            height: 31px
             cursor: pointer
             margin-right: 16px
             @media (max-width: 940px)
@@ -263,7 +272,7 @@
     &__poster
         width: vw(212,320)
         height: vw(212,320)
-        border-radius: 50%
+        // border-radius: 50%
         overflow: hidden
         background-color: #2B2B2B
         margin: 0 auto vh(48)
