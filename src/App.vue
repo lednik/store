@@ -1,6 +1,6 @@
 <template>
 <div class="app">
-   <Header />
+  <Header />
   <transition name="page">
     <router-view></router-view>
   </transition>
@@ -37,9 +37,6 @@ export default {
     }
   },
   mounted() {
-    // let script =  document.createElement('script')
-    // let vh = window.innerHeight * 0.01;
-    // document.documentElement.style.setProperty('--vh', `${vh}px`);
     // console.log('env', process.env.VUE_APP_ROOT_API);
   }
 }

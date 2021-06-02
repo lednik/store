@@ -1,23 +1,20 @@
 <template>
     <transition name="fade">
         <div v-if="activeModalName !=''" class="modal">
-            <transition :name="transiton">
-                <div
-                    v-if="isContent"
-                    class="modal__content"
-                    :class="{'modal__content_info' : isInfoModal}"
-                    v-click-outside="outclickClose"
-                >
-                    <div class="arrow" @click="closeModal">
-                        <div class="arrow-content">
-                            <div class="arrow__line arrow__line_first" />
-                            <div class="arrow__line arrow__line_second" />
-                        </div>
+            <div
+                class="modal__content"
+                :class="{'modal__content_info' : isInfoModal}"
+                v-click-outside="outclickClose"
+            >
+                <div class="arrow" @click="closeModal">
+                    <div class="arrow-content">
+                        <div class="arrow__line arrow__line_first" />
+                        <div class="arrow__line arrow__line_second" />
                     </div>
-                    <component v-bind:is="activeModalName" key="activeModalName">
-                    </component>
                 </div>
-            </transition>
+                <component v-bind:is="activeModalName" key="activeModalName">
+                </component>
+            </div>
         </div>
     </transition>
 </template>
@@ -32,7 +29,7 @@
     export  default {
         data() {
             return {
-                transiton: 'fade',
+                // transiton: 'fade',
                 isContent: true
             }
         },
@@ -73,9 +70,9 @@
             },
         },
         created() {
-            if (window.innerWidth < 768) {
-                this.transiton = 'mobilemodal';
-            }
+            // if (window.innerWidth < 768) {
+            //     this.transiton = 'mobilemodal';
+            // }
         },
         mounted() {
         }

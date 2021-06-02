@@ -155,7 +155,7 @@
 		</div>
 	</div>
 	<audio ref="player">
-		<source ref="source" type="audio/mpeg">
+		<source v-if="source" class="source" ref="source" type="audio/mpeg">
 	</audio>
 </div>
 </template>
@@ -170,8 +170,11 @@ export default {
 	},
 	watch: {
 		'currentIndex': function () {
+			// this.source = false
 			this.track = Object.assign({}, this.getTrack)
+			this.pause()
 			this.$refs.source.src = this.getTrack.track_url
+			this.$refs.player.load()
 			this.play()
 		},
 		'waitingToggle': function () {
@@ -187,7 +190,8 @@ export default {
 			currentTime: '',
 			isVolumeBar: false,
 			fullPlayer: false,
-			isMobile: false
+			isMobile: false,
+			source: true
         }
     },
   	methods: {
@@ -238,15 +242,9 @@ export default {
 		},
 		moveTrack(e) {
 			let value = this.getClickPosition(e, 'progressbar')
-			// let percent = value * 100
     		let allTime = this.$refs.player.duration;
     		let time = Math.floor(allTime * (value));
     		this.$refs.player.currentTime = time;
-			// this.$refs.progress.style.transition = '0s';
-    		// this.$refs.progress.style.width = percent + '%';
-			// setTimeout(() => {
-			// 	this.$refs.progress.style.transition = '0.5s';
-			// }, 100)
     	},
 		progressBarWidth() {
 			return this.$refs.player.currentTime / this.$refs.player.duration * 100
