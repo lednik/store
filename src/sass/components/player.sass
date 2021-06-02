@@ -244,9 +244,12 @@
                 opacity: 1
 .player-mobile
     position: fixed
-    // display: flex
+    display: flex
+    flex-direction: column
+    justify-content: space-between
+    // align-items: center
     width: 100vw
-    height: 100vh
+    height: 100%
     top: 0
     left: 0
     background-color: #202020
@@ -271,7 +274,9 @@
                 stroke: #fff
     &__poster
         width: vw(212,320)
-        height: vw(212,320)
+        // height: vw(212,320)
+        flex: 1
+        max-height: vw(212,320)
         // border-radius: 50%
         overflow: hidden
         background-color: #2B2B2B

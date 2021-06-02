@@ -9,8 +9,8 @@ Vue.use(VueRouter)
 import VueResource from 'vue-resource'
 Vue.use(VueResource);
 // Vue.http.options.root = 'http://alexey/market.new/api/'
-// Vue.http.options.root = 'http://dev.store.bubuka.info/api/'
-Vue.http.options.root = '/api/'
+Vue.http.options.root = 'http://dev.store.bubuka.info/api/'
+// Vue.http.options.root = '/api/'
 
 import { VueMaskDirective } from 'v-mask'
 Vue.directive('mask', VueMaskDirective)
