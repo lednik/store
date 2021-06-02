@@ -18,8 +18,10 @@ import Header from '@layout/header'
 import Footer from '@layout/footer'
 import Modal from '@components/modal'
 import Player from '@components/player'
+import Scroll from "@mixins/scroll"
 export default {
   name: 'app',
+  mixins: [Scroll],
   components: {
     Header,
     Footer,
@@ -35,6 +37,7 @@ export default {
     }
   },
   mounted() {
+    let script =  document.createElement('script')
     // console.log('env', process.env.VUE_APP_ROOT_API);
   }
 }

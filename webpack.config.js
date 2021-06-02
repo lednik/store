@@ -104,6 +104,7 @@ module.exports = {
       '@assets': path.resolve(__dirname, 'src/assets'),
       '@ui': path.resolve(__dirname, 'src/components/ui'),
       '@components': path.resolve(__dirname, 'src/components'),
+      '@mixins': path.resolve(__dirname, 'src/components/mixins'),
       '@pages': path.resolve(__dirname, 'src/pages'),
       '@layout': path.resolve(__dirname, 'src/layout'),
     },
