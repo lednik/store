@@ -16,7 +16,6 @@ export default {
   },
   methods: {
     burgerClick() {
-        console.log('emit');
         this.$emit('burger-click')
     }
   }

@@ -207,9 +207,7 @@ export default {
         Vue.http[method](action, this.formData)
           .then(response => response.json())
           .then(data => {
-            console.log(data);
             if (data.success) {
-              console.log('successs');
               this.showModal({
                 name: 'info',
                 props: {
@@ -218,12 +216,7 @@ export default {
                 }
               })
             }
-            // this.cleanForm()
-            
-            resolve()
           }, data => {
-            console.log('notsuccess');
-            reject()
           })  
       }
     },

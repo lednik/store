@@ -44,7 +44,6 @@ export default {
   },
   watch: {
     'isPlaying': function () {
-      console.log('isPlaying');
       if (this.getTrack && this.getTrack.id == this.id && this.isPlaying == true) {
         this.playing = true
       } else {

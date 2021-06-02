@@ -35,7 +35,7 @@ export default {
     }
   },
   mounted() {
-    console.log('env', process.env.VUE_APP_ROOT_API);
+    // console.log('env', process.env.VUE_APP_ROOT_API);
   }
 }
 </script>

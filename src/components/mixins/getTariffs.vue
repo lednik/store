@@ -28,10 +28,7 @@ export default {
         .then(response => response.json())
         .then(data => {
           this.tarifs = data.table.records
-          resolve()
         }, data => {
-          console.log('notsuccess');
-          reject()
         })
     },
     toRequest($event) {

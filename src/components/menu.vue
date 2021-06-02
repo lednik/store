@@ -42,7 +42,6 @@ export default {
 
   },
   mounted() {
-      console.log('route', this.$route);
   }
 }
 </script>

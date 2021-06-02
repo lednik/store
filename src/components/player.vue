@@ -1,6 +1,6 @@
 <template>
 <div class="player">
-	<div class="arrow" @click="closePlayer">
+	<div class="arrow" @click.stop="closePlayer">
         <div class="arrow-content">
             <div class="arrow__line arrow__line_first" />
             <div class="arrow__line arrow__line_second" />
@@ -144,8 +144,8 @@
 				</div>
 			</div>
 			<div v-if="isVolumeBar" class="player__volume-wrapper mb">
-				<div class="player__volume-bar" ref="valuebar" @click="changeValue">
-					<div ref="value" class="player__volume-progress">
+				<div class="player__volume-bar" ref="valuebartablet" @click="changeValueTablet">
+					<div ref="valuetablet" class="player__volume-progress">
 						<div class="player__volume-line">
 							<div class="player__volume-circle" />
 						</div>
@@ -171,7 +171,7 @@ export default {
 	watch: {
 		'currentIndex': function () {
 			this.track = Object.assign({}, this.getTrack)
-			this.$refs.player.src = this.getTrack.track_url
+			this.$refs.source.src = this.getTrack.track_url
 			this.play()
 		},
 		'waitingToggle': function () {
@@ -219,10 +219,15 @@ export default {
 		},
 		changeValue(e) {
 			let value = this.getClickPosition(e, 'valuebar')
-			console.log(value);
 			let percent = value * 100
 			this.$refs.player.volume = value
 			this.$refs.value.style.width = percent + '%';
+		},
+		changeValueTablet(e) {
+			let value = this.getClickPosition(e, 'valuebartablet')
+			let percent = value * 100
+			this.$refs.player.volume = value
+			this.$refs.valuetablet.style.width = percent + '%';
 		},
 		moveTrackMobile(e) {
 			let value = this.getClickPosition(e, 'progressbarmobile')
@@ -278,7 +283,7 @@ export default {
 			this.isMobile = true
 		}
 		this.track = Object.assign({}, this.getTrack)
-		this.$refs.player.src = this.getTrack.track_url
+		this.$refs.source.src = this.getTrack.track_url
 		this.play()
 		this.$refs.player.ontimeupdate = () => {
 			this.refreshProgressBar('progress')

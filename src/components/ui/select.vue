@@ -47,7 +47,6 @@ export default {
             this.$emit('change-value', value)
         },
         toggleOptions() {
-            console.log('showOptions');
             this.isOptions = !this.isOptions
         },
         hideOptions() {

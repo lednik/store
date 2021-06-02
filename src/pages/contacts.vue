@@ -193,7 +193,6 @@ import Vue from 'vue'
 					Vue.http[method](action, this.formData)
 						.then(response => response.json())
 						.then(data => {
-							console.log(data);
 							if (data.success) {
 								this.cleanForm()
 								this.showModal({
@@ -204,12 +203,7 @@ import Vue from 'vue'
 									}
 								})
 							}
-							// this.cleanForm()
-							
-							resolve()
 						}, data => {
-							console.log('notsuccess');
-							reject()
 						})  
 				}
 			},

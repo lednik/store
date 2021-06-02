@@ -31,10 +31,7 @@ export default {
           .then(response => response.json())
           .then(data => {
             this.tracks = data.table.records
-            console.log(data.table.records);
-            resolve()
           }, data => {
-            reject()
           })
       }
     },
