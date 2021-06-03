@@ -53,11 +53,10 @@ export default {
     methods: {
         toRequest() {
             this.$emit('request', this.name)
+            ym(80155144,'reachGoal','form_send')
         }
     },
     mounted() {
-        // console.log('');
-    //   this.getTariffs()
     }
 }
 </script>

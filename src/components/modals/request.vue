@@ -208,6 +208,7 @@ export default {
           .then(response => response.json())
           .then(data => {
             if (data.success) {
+              ym(80155144,'reachGoal','form_send')
               this.showModal({
                 name: 'info',
                 props: {

@@ -173,6 +173,7 @@ export default {
           list: this.tariffsOptions
         }
       )
+      ym(80155144,'reachGoal','form_send')
     }
   },
   mounted () {
