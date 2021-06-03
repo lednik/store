@@ -119,7 +119,7 @@
 		<div class="player__bar" ref="progressbar" @click="moveTrack">
 			<div class="player__bar-progress" ref="progress">
 				<div class="player__bar-line">
-					<div class="player__bar-circle" />
+					<div ref="barcircle" @click.stop="" class="player__bar-circle" />
 				</div>
 			</div>
 		</div>
@@ -135,10 +135,10 @@
 				</svg>
 			</div>
 			<div class="player__volume-wrapper dt">
-				<div class="player__volume-bar" ref="valuebar" @click="changeValue">
+				<div class="player__volume-bar" ref="valuebar">
 					<div ref="value" class="player__volume-progress">
 						<div class="player__volume-line">
-							<div class="player__volume-circle" />
+							<div ref="circle" class="player__volume-circle" />
 						</div>
 					</div>
 				</div>
@@ -205,8 +205,8 @@ export default {
 		},
 		getClickPosition(e, ref) {
 			let rect = this.$refs[ref].getBoundingClientRect();
+			let x = (e.offsetX === undefined) ? e.layerX : e.offsetX
 			let width = rect.right - rect.left;
-			let x = (e.offsetX === undefined) ? e.layerX : e.offsetX;
 			let value = (x / width)
 			return value
 		},
@@ -239,12 +239,14 @@ export default {
     		let allTime = this.$refs.player.duration;
     		let time = Math.floor(allTime * (value));
     		this.$refs.player.currentTime = time;
+			// console.log('lol');
 		},
 		moveTrack(e) {
 			let value = this.getClickPosition(e, 'progressbar')
     		let allTime = this.$refs.player.duration;
     		let time = Math.floor(allTime * (value));
     		this.$refs.player.currentTime = time;
+			console.log('lol');
     	},
 		progressBarWidth() {
 			return this.$refs.player.currentTime / this.$refs.player.duration * 100
@@ -264,7 +266,8 @@ export default {
 			var s = Math.floor(seconds % 3600 % 60);
 
 			var hDisplay = h > 0 ? (h < 10 ? 0 : '') + h + ":" : ''
-			var mDisplay = (m < 10 ? '0' : '') + m + ":"
+			// var mDisplay = (m < 10 ? '0' : '') + m + ":"
+			var mDisplay = m > 0 ?  m + ":" :  '0:'
 			var sDisplay = (s < 10 ? '0' : '') + s
 			return hDisplay + mDisplay + sDisplay; 
 		},
@@ -273,7 +276,43 @@ export default {
 				this.currentTime = this.secondsToTime(this.$refs.player.currentTime)
 				this.$refs[ref].style.width = `${this.progressBarWidth()}%`	
 			}
-			
+		},
+		dragAndDropPosition(e, parentRef) {
+			let rect = this.$refs[parentRef].getBoundingClientRect()
+			let value
+			let x = e.pageX
+			if (x < rect.left) {
+				value = 0
+			} else if (x > rect.right) {
+				console.log('x', x);
+				console.log('right', rect.right);
+				value = 1
+			} else {
+				value =  (x - rect.left) / (rect.right - rect.left)
+			}
+			console.log(value);
+			return value
+		},
+		dragItem(e, ref, parentRef) {
+			let position = this.dragAndDropPosition(e, parentRef)
+			let percent = position * 100
+			this.$refs[ref].style.width = percent + '%';
+			return position
+		},
+		refreshVolume(e, ref, parentRef) {
+			let position = this.dragItem(e, ref, parentRef)
+			this.$refs.player.volume = position
+		},
+		refreshProgressBarLine(e, isMouseUp = false) {
+			let position = this.dragItem(e, 'progress', 'progressbar')
+			if (isMouseUp) {
+				console.log('true', position);
+				let allTime = this.$refs.player.duration;
+				let time = Math.floor(allTime * (position));
+				console.log('time', time);
+    			this.$refs.player.currentTime = time;
+				console.log('yes');
+			}
 		}
 	},
 	mounted() {
@@ -289,6 +328,33 @@ export default {
 		}
 		this.$refs.player.onended = () => {
 			this.playNext()
+		}
+		this.$refs.circle.onmousedown = (e) => {
+			this.refreshVolume(e, 'value', 'valuebar')
+			document.onmousemove = (e) => {
+				this.refreshVolume(e, 'value', 'valuebar')
+			}
+			document.onmouseup = (e) => {
+				document.onmousemove = null
+				this.$refs.circle.onmouseup = null
+			}
+		}
+		this.$refs.barcircle.onmousedown = (e) => {
+			console.log('down', e);
+			this.$refs.player.ontimeupdate = null
+			document.onmousemove = (e) => {
+				this.refreshProgressBarLine(e)
+			}
+			document.onmouseup = (e) => {
+				console.log('up', e);
+				this.refreshProgressBarLine(e, true)
+				document.onmousemove = null
+				this.$refs.barcircle.onmouseup = null
+				this.$refs.player.ontimeupdate = () => {
+					this.refreshProgressBar('progress')
+					this.refreshProgressBar('progressmobile')
+				}
+			}
 		}
 	},
 	

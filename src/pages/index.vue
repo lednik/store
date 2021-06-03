@@ -119,36 +119,36 @@ export default {
           el: '.swiper-pagination'
         }
       },
-      mocTracks: [
-        {
-          id: 1,
-          title: 'песня1',
-          artist: 'автор1',
-          duration_str: '24:34',
-          track_url: 'src/assets/images/sample1.mp3'
-        },
-        {
-          id: 2,
-          title: 'песня2',
-          artist: 'автор2',
-          duration_str: '24:34',
-          track_url: 'src/assets/images/sample2.mp3'
-        },
-        {
-          id: 3,
-          title: 'песня3',
-          artist: 'автор3',
-          duration_str: '24:34',
-          track_url: 'src/assets/images/sample3.mp3'
-        },
-        {
-          id: 4,
-          title: 'песня4',
-          artist: 'автор4',
-          duration_str: '24:34',
-          track_url: 'src/assets/images/sample4.mp3'
-        }
-      ]
+      // mocTracks: [
+      //   {
+      //     id: 1,
+      //     title: 'песня1',
+      //     artist: 'автор1',
+      //     duration_str: '24:34',
+      //     track_url: 'src/assets/images/sample1.mp3'
+      //   },
+      //   {
+      //     id: 2,
+      //     title: 'песня2',
+      //     artist: 'автор2',
+      //     duration_str: '24:34',
+      //     track_url: 'src/assets/images/sample2.mp3'
+      //   },
+      //   {
+      //     id: 3,
+      //     title: 'песня3',
+      //     artist: 'автор3',
+      //     duration_str: '24:34',
+      //     track_url: 'src/assets/images/sample3.mp3'
+      //   },
+      //   {
+      //     id: 4,
+      //     title: 'песня4',
+      //     artist: 'автор4',
+      //     duration_str: '24:34',
+      //     track_url: 'src/assets/images/sample4.mp3'
+      //   }
+      // ]
     }
   },
   computed: {
