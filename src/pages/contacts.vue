@@ -195,6 +195,7 @@ import Vue from 'vue'
 						.then(data => {
 							if (data.success) {
                 ym(80155144,'reachGoal','question')
+                ym(80155144,'reachGoal','question_ret')
 								this.cleanForm()
 								this.showModal({
 									name: 'info',
