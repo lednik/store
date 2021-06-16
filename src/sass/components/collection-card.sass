@@ -1,0 +1,49 @@
+@import "~@styles/main.sass"
+.collection-card
+    width: 212px
+    margin-bottom: 40px
+    &:hover
+        cursor: pointer
+        .collection-card__bg
+            opacity: 1
+    &__poster
+        position: relative
+        height: 212px
+        margin-bottom: 8px
+    &__bg
+        position: absolute
+        top: 0
+        left: 0
+        z-index: 1
+        width: 100%
+        height: 100%
+        display: flex
+        align-items: center
+        justify-content: center
+        background-color: rgba(0, 0, 0, 0.5)
+        opacity: 0
+        transition: 0.3s
+    &__button
+        width: 80px
+        height: 80px
+        background-color: #fff
+        border-radius: 50%
+        display: flex
+        align-items: center
+        justify-content: center
+    &__icon
+        width: 32px
+        height: 32px
+        rect, path
+            fill: $dark
+    &__play
+        transform: translateX(4px)
+    &__img
+        object-fit: cover
+    &__name
+        font-family: $mid
+        font-size: 16px
+        line-height: 150%
+        overflow: hidden
+        white-space: nowrap
+        text-overflow: ellipsis

@@ -21,6 +21,7 @@
       <div class="home__list container">
         <track-cmp
           v-for="(item, index) in tracks"
+          class="track_short"
           :id="item.id"
           :name="item.title"
           :author="item.artist"
@@ -29,9 +30,9 @@
           :key="item.id"
         />
       </div>
-      <a href="https://enter.yoga/catalog/" target="_blank" class="home__catalog button__border button">
+      <!-- <a href="https://enter.yoga/catalog/" target="_blank" class="home__catalog button__border button">
         Перейти в каталог
-      </a>
+      </a> -->
       <div class="home__svg">
         <svg width="1920" height="264" viewBox="0 0 1920 264" fill="none" xmlns="http://www.w3.org/2000/svg">
         <g opacity="0.12">

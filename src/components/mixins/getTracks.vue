@@ -8,7 +8,7 @@ export default {
         tracks: [],
         tracksFilters: {
           'pagination[order]': 'rnd',
-          'pagination[filters][thumb_file_id_isnotnull]': true,
+          'pagination[filters][demo_file_id_isnotnull]': true,
           'update': 1
         },
     }
@@ -19,24 +19,31 @@ export default {
         for (let key in this.tracksFilters) {
 	    	  formData.append(`${key}`, this.tracksFilters[key])
 	      }
+        if(this.activeTags && this.activeTags.length > 0) {
+          let array = []
+          this.activeTags.forEach( item => {
+            array.push(item.id)
+          })
+          let str = array.join(',')
+          formData.append('pagination[filters][tag_id]', str)
+        }
         return formData
     },
   },
   methods: {
-        // ...mapMutations('modal', ['showModal']),
       getTracks() {
         let action = 'track/track/list_ajax'
         let method = 'post'
         Vue.http[method](action, this.tracksData)
           .then(response => response.json())
           .then(data => {
-            this.tracks = data.table.records
+            this.tracks  = data.table.records
           }, data => {
           })
       }
     },
     mounted() {
-        this.getTracks()
+      this.getTracks()
     }
 }
 </script>

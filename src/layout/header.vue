@@ -20,22 +20,25 @@
         </div>
         <div class="header__right">
             <div class="header__nav">
-                <div v-link href="/about" class="header__nav-item" :class="{'inactive-route': $route.name == 'about'}">
+                <a v-link href="/about" class="header__nav-item" :class="{'inactive-route': $route.name == 'about'}">
                   О проекте
-                </div>
-                <div v-link href="/tariffs" class="header__nav-item" :class="{'inactive-route': $route.name == 'tariffs'}">
+                </a>
+                <a v-link href="/catalog" class="header__nav-item" :class="{'inactive-route': $route.name == 'catalog'}">
+                  Каталог
+                </a>
+                <a v-link href="/tariffs" class="header__nav-item" :class="{'inactive-route': $route.name == 'tariffs'}">
                   Тарифы
-                </div>
-                <div v-link href="/contacts" class="header__nav-item" :class="{'inactive-route': $route.name == 'contacts'}">
+                </a>
+                <a v-link href="/contacts" class="header__nav-item" :class="{'inactive-route': $route.name == 'contacts'}">
                   Контакты
-                </div>
+                </a>
             </div>
-            <a href="tel:88007001191" class="header__phone">
+            <!-- <a href="tel:88007001191" class="header__phone">
               8 800 700 11 91
-            </a>
-            <a href="https://enter.yoga/catalog/" target="_blank" class="header__button button__border button">
-              Перейти в каталог
-            </a>
+            </a> -->
+            <div class="header__button button__bg button">
+              Авторизация
+            </div>
             <Burger @burger-click="toggleMenu" :is-open="isMenu" />
             <transition name="menu">
               <Menu v-if="isMenu" />

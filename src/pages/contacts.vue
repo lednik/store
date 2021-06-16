@@ -61,7 +61,7 @@
                   @input="form.question.error = false"
                 />
             </div>
-            <div @click="sendForm" class="button__border button__border_small button">
+            <div @click="sendForm" class="button__bg button__bg_small button">
                 Отправить
             </div>
         </div>

@@ -50,9 +50,7 @@
 
 <script>
 import Track from '@components/track'
-// import {mapState, mapMutations} from 'vuex';
 import getTracks from '@components/mixins/getTracks'
-// import tariff from '@components/tariff'
 import {mapMutations} from 'vuex';
 export default {
   name: 'about',
