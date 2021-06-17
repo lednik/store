@@ -27,6 +27,10 @@ export default {
           let str = array.join(',')
           formData.append('pagination[filters][tag_id]', str)
         }
+        if (this.min || this.max) {
+          formData.append('pagination[filters][bpm_max]', this.max)
+          formData.append('pagination[filters][bpm_min]', this.min)
+        }
         return formData
     },
   },

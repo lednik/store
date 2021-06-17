@@ -4,6 +4,7 @@
       <p
         v-for="item in groups"
         class="catalog__group"
+        :class="{'catalog__group_active': activeGroup == item.name}"
         @click="showGroup(item)"
         :key="item.id"
       >
@@ -14,12 +15,14 @@
       <collection-card
         v-for="item in collections"
         class="collection-card"
+        @click="showCollection(item.id)"
         :item="item"
         :key="item.id"
       ></collection-card>
     </div>
+    <collection-cmp v-else-if="activeGroup == 'Подборка'" :id="collectionId" />
     <template v-else>
-      <div class="catalog__tags">
+      <div v-if="tags.length > 0" class="catalog__tags">
         <div
           v-for="item in tags"
           class="catalog__tag tag"
@@ -36,6 +39,7 @@
           </div>
         </div>
       </div>
+      <bpm-cmp @bpm="setBpm" v-show="activeGroup == 'BPM'" />
       <div class="catalog__activeTags">
         <div
           v-for="item in activeTags"
@@ -71,7 +75,9 @@
 <script>
 import Vue from 'vue'
 import collectionCard from '@components/collection-card'
+import collection from '@components/collection'
 import Track from '@components/track'
+import Bpm from '@components/bpm'
 import getTracks from '@components/mixins/getTracks'
 import {mapMutations} from 'vuex';
   export default {
@@ -79,7 +85,9 @@ import {mapMutations} from 'vuex';
     mixins: [getTracks],
     components: {
       'collection-card': collectionCard,
-      'track-cmp': Track
+      'collection-cmp': collection,
+      'track-cmp': Track,
+      'bpm-cmp': Bpm
     },
     data() {
       return {
@@ -89,25 +97,41 @@ import {mapMutations} from 'vuex';
             isActive: true
           }
         ],
+        collectionId: '',
         activeGroup: 'Подборки',
         tags: [],
         activeTags: [],
-        collections: []
+        collections: [],
+        min: 0,
+        max: 200
       }
     },
     watch: {
       'activeTags' : function () {
-        console.log('here');
+        this.getTracks()
+      },
+      'min' : function() {
+        this.getTracks()
+      },
+      'max' : function() {
         this.getTracks()
       }
     },
     methods: {
       ...mapMutations('playlist', ['setPlaylist']),
-      startPlaylist(index, traks) {
+      showCollection(id) {
+        this.collectionId = id
+        this.showGroup({name: 'Подборка'})
+      },
+      startPlaylist(index, tracks) {
         this.setPlaylist({
-          playlist: traks,
+          playlist: tracks,
           index
         })
+      },
+      setBpm($event) {
+        this.min = $event.min
+        this.max = $event.max
       },
       tagsData(id) {
         let formData = new FormData()
@@ -188,6 +212,12 @@ import {mapMutations} from 'vuex';
           this.tags = []
           this.getCollections()
         }
+        if(item.name == 'collection') {
+          this.activeGroup = item.name
+        }
+        if(item.name == 'BPM') {
+          this.tags = []
+        }
         else {
           this.getTags(item.id)
         }
@@ -212,7 +242,6 @@ import {mapMutations} from 'vuex';
     mounted() {
       this.getGroups()
       this.getCollections()
-      // this.getTracks()
     },
   }
 </script>

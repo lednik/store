@@ -1,6 +1,7 @@
 export default {
 	namespaced: true,
 	state: {
+        id: -1,
         currentIndex: -1,
         playlist: [],
         waitingToggle: false,
@@ -17,17 +18,23 @@ export default {
                 state.waitingToggle =  true
             } else {
                 state.playlist = data.playlist
-                state.currentIndex = data.index    
+                state.currentIndex = data.index
+                state.id = data.id ? data.id : -1
             }
         },
         closePlaylist(state) {
+            state.id = -1
             state.currentIndex = -1
             state.playlist = []
             state.waitingToggle = false
             state.isPlaying = false
         },
-        setWaitingToggle(state) {
-            state.waitingToggle = false
+        setWaitingToggle(state, data) {
+            if(data) {
+                state.waitingToggle = data
+            } else {
+                state.waitingToggle = false
+            }
         },
         setIsPlaying(state, data) {
             state.isPlaying = data

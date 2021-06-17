@@ -333,17 +333,17 @@ export default {
 		},
 		startBarEvents(ref, parentRef) {
 			let event = this.isMobile ? 'ontouchstart' : 'onmousedown'
-			let moveEevnt = this.isMobile ? 'ontouchmove' : 'onmousemove'
+			let moveEvent = this.isMobile ? 'ontouchmove' : 'onmousemove'
 			let endEvent = this.isMobile ? 'ontouchend' : 'onmouseup'
 			
 			this.$refs[parentRef][event] = () => {
 				this.$refs.player.ontimeupdate = null
-				document[moveEevnt] = (e) => {
+				document[moveEvent] = (e) => {
 					this.refreshProgressBarLine(e, ref, parentRef)
 				}
 				document[endEvent] = (e) => {
 					this.refreshProgressBarLine(e, ref, parentRef, true)
-					document[moveEevnt] = null
+					document[moveEvent] = null
 					document[endEvent] = null
 					this.startOnTimeUpdateEvents()
 				}

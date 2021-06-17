@@ -8,6 +8,7 @@ import Tariffs from '@pages/tariffs.vue';
 import About from '@pages/about.vue';
 import Contacts from '@pages/contacts.vue';
 import catalog from '@pages/catalog.vue';
+// import collection from '@pages/collection.vue';
 
 
 const routes = [
@@ -35,7 +36,12 @@ const routes = [
         path: '/catalog',
         name: 'catalog',
         component: catalog
-    }
+    },
+    // {
+    //     path: '/collection/:id',
+    //     name: 'collection',
+    //     component: collection
+    // }
 ];
 
 export const router = new VueRouter({
