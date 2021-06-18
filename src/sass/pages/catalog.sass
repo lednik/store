@@ -4,9 +4,30 @@
     margin: 0 auto
     margin-top: 40px
     margin-bottom: 110px
+    &__top
+        display: flex
+        justify-content: space-between
+        align-items: center
+        margin-bottom: 40px
+    &__allTags
+        padding: 0px 12px 4px
+        display: flex
+        align-items: center
+        color: #757575
+        border: 1px solid #757575
+        cursor: pointer
+        &-name
+            margin-right: 8px
+            font-family: $mid
+            font-size: 20px
+            line-height: 150%
+            letter-spacing: 0.02em
+        svg
+            transform: translateY(-2px)
+            path
+                stroke: #757575
     &__groups
         display: flex
-        margin-bottom: 40px
     &__group
         position: relative
         margin-right: 32px
@@ -46,94 +67,3 @@
         display: flex
         flex-wrap: wrap
         justify-content: space-between
-.tag
-    padding: 7px 16px 8px
-    border: 1px solid #fff
-    cursor: pointer
-    display: flex
-    align-items: center
-    transition: 0.3s
-    margin-left: -1px
-    margin-bottom: -1px
-    &:hover
-        background: #2F2F2F
-    &_active
-        background-color: #fff
-        border: 1px solid $dark
-        &:hover
-            background-color: #fff
-        .tag
-            &__name
-                color: $dark
-            &__line
-                background-color: $dark
-    &__name
-        font-family: $bold
-        font-size: 16px
-        line-height: 150%
-        text-align: center
-        letter-spacing: 0.02em
-        margin-right: 10px
-    &__icon
-        width: 16px
-        height: 16px
-        position: relative
-        transition: 0.3s
-    &__line
-        position: absolute
-        width: 14px
-        height: 2px
-        top: 50%
-        left: 50%
-        transform: translate(-50%, -50%)
-        background-color: #fff
-        &_1
-            transform: translate(-50%, -50%) rotate(90deg)
-.collection-card
-    width: 212px
-    margin-bottom: 40px
-    &:hover
-        cursor: pointer
-        .collection-card__bg
-            opacity: 1
-    &__poster
-        position: relative
-        height: 212px
-        margin-bottom: 8px
-    &__bg
-        position: absolute
-        top: 0
-        left: 0
-        z-index: 1
-        width: 100%
-        height: 100%
-        display: flex
-        align-items: center
-        justify-content: center
-        background-color: rgba(0, 0, 0, 0.5)
-        opacity: 0
-        transition: 0.3s
-    &__button
-        width: 80px
-        height: 80px
-        background-color: #fff
-        border-radius: 50%
-        display: flex
-        align-items: center
-        justify-content: center
-    &__icon
-        width: 32px
-        height: 32px
-        rect, path
-            fill: $dark
-    &__play
-        transform: translateX(4px)
-    &__img
-        object-fit: cover
-    &__name
-        font-family: $mid
-        font-size: 16px
-        line-height: 150%
-        overflow: hidden
-        white-space: nowrap
-        text-overflow: ellipsis

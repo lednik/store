@@ -25,6 +25,7 @@
 
 <script>
     export default {
+        props: ['bpmrefresh'],
         data() {
             return {
                 min: 0,
@@ -33,7 +34,31 @@
                 closestCircle: ''
             }
         },
+        watch: {
+            'bpmrefresh': function() {
+                this.resetBpm()
+            }
+        },
         methods: {
+            resetBpm() {
+                
+                this.$refs.line.style.transition = '0.3s'
+                this.$refs.right.style.transition = '0.3s'
+                this.$refs.left.style.transition = '0.3s'
+
+                this.$refs.line.style.left = '0%'
+                this.$refs.left.style.left = '0%'
+                this.$refs.line.style.width = '100%'
+                this.$refs.right.style.left = '100%'
+                this.$refs.leftvalue.style.transform = 'translateX(0)'
+                this.$refs.rightvalue.style.transform = 'translateX(0)'
+
+                setTimeout(() => {
+                    this.$refs.line.style.transition = '0s'
+                    this.$refs.right.style.transition = '0s'
+                    this.$refs.left.style.transition = '0s'
+                }, 300);
+            },
             emitToParent() {
                 console.log('here');
                 this.$emit('bpm', {min: this.min, max: this.max})

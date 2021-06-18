@@ -1,17 +1,28 @@
 <template>
   <div class="catalog page">
-    <div class="catalog__groups">
-      <p
-        v-for="item in groups"
-        class="catalog__group"
-        :class="{'catalog__group_active': activeGroup == item.name}"
-        @click="showGroup(item)"
-        :key="item.id"
-      >
-        {{item.name}}
-      </p>
+    <div class="catalog__top">
+      <div class="catalog__groups">
+        <p
+          v-for="item in groups"
+          class="catalog__group"
+          :class="{'catalog__group_active': activeGroup == item.name}"
+          @click="showGroup(item)"
+          :key="item.id"
+        >
+          {{item.name}}
+        </p>
+      </div> 
+      <div class="catalog__allTags" @click="isAllTags = true">
+        <span class="catalog__allTags-name unselect">Все теги</span>
+        <div class="catalog__allTags-arrow">
+          <svg width="10" height="6" viewBox="0 0 10 6" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <path d="M1 1L4.92929 4.92929C4.96834 4.96834 5.03166 4.96834 5.07071 4.92929L9 1" stroke="white" stroke-width="2" stroke-linecap="round"/>
+          </svg>
+        </div>
+      </div>
     </div>
-    <div v-if="activeGroup == 'Подборки'" class="catalog__collections">
+
+    <div v-show="activeGroup == 'Подборки'" class="catalog__collections">
       <collection-card
         v-for="item in collections"
         class="collection-card"
@@ -20,12 +31,12 @@
         :key="item.id"
       ></collection-card>
     </div>
-    <collection-cmp v-else-if="activeGroup == 'Подборка'" :id="collectionId" />
-    <template v-else>
+    <collection-cmp v-if="activeGroup == 'Подборка'" :id="collectionId" />
+    <div v-show="activeGroup != 'Подборка' && activeGroup != 'Подборки'">
       <div v-if="tags.length > 0" class="catalog__tags">
         <div
           v-for="item in tags"
-          class="catalog__tag tag"
+          class="catalog__tag tag unselect"
           :class="{'tag_active': item.isActive}"
           @click="addTag(item)"
           :key="item.id"
@@ -39,16 +50,29 @@
           </div>
         </div>
       </div>
-      <bpm-cmp @bpm="setBpm" v-show="activeGroup == 'BPM'" />
-      <div class="catalog__activeTags">
+      <bpm-cmp @bpm="setBpm" :bpmrefresh="bpmRefresh" v-show="activeGroup == 'BPM'" />
+      <div class="catalog__activeTags" v-show="activeTags.length > 0 || min != 0 || max!= 200">
         <div
           v-for="item in activeTags"
-          class="catalog__activeTag tag tag_active"
+          class="catalog__activeTag tag tag_active unselect"
           @click="addTag(item)"
           :key="item.id"
         >
           <span class="tag__name">
             {{item.name}}
+          </span>
+          <div class="tag__icon">
+            <div class="tag__line tag__line_1"/>
+            <div class="tag__line tag__line_2"/>
+          </div>
+        </div>
+        <div
+          v-if="min != 0 || max!= 200"
+          class="catalog__activeTag tag tag_active"
+          @click="resetBpm"
+        >
+          <span class="tag__name">
+            {{min}} - {{max}} BPM
           </span>
           <div class="tag__icon">
             <div class="tag__line tag__line_1"/>
@@ -68,7 +92,10 @@
         />
       </div>
       
-    </template>
+    </div>
+    <transition name="fade">
+      <tags-cmp @closeTags="isAllTags = false" :groupId="activeGroupId" v-if="isAllTags" @toggletag="toggleTag" :activeTags="activeTags"/>
+    </transition>
   </div>
 </template>
 
@@ -78,6 +105,7 @@ import collectionCard from '@components/collection-card'
 import collection from '@components/collection'
 import Track from '@components/track'
 import Bpm from '@components/bpm'
+import Tags from '@components/tags'
 import getTracks from '@components/mixins/getTracks'
 import {mapMutations} from 'vuex';
   export default {
@@ -87,7 +115,8 @@ import {mapMutations} from 'vuex';
       'collection-card': collectionCard,
       'collection-cmp': collection,
       'track-cmp': Track,
-      'bpm-cmp': Bpm
+      'bpm-cmp': Bpm,
+      'tags-cmp': Tags
     },
     data() {
       return {
@@ -103,7 +132,10 @@ import {mapMutations} from 'vuex';
         activeTags: [],
         collections: [],
         min: 0,
-        max: 200
+        max: 200,
+        bpmRefresh: false,
+        isAllTags: false,
+        activeGroupId: ''
       }
     },
     watch: {
@@ -123,6 +155,11 @@ import {mapMutations} from 'vuex';
         this.collectionId = id
         this.showGroup({name: 'Подборка'})
       },
+      resetBpm() {
+        this.min = 0
+        this.max = 200
+        this.bpmRefresh = !this.bpmRefresh
+      },
       startPlaylist(index, tracks) {
         this.setPlaylist({
           playlist: tracks,
@@ -136,6 +173,7 @@ import {mapMutations} from 'vuex';
       tagsData(id) {
         let formData = new FormData()
         formData.append('pagination[filters][tag_group_id]', id)
+        formData.append('pagination[page_size]', '20')
         return formData
       },
       collectionsData() {
@@ -162,6 +200,9 @@ import {mapMutations} from 'vuex';
           }
         })
         return isItem
+      },
+      toggleTag($event) {
+        this.addTag($event)
       },
       addTag(item) {
         let index = this.tagIndex(item)
@@ -208,14 +249,15 @@ import {mapMutations} from 'vuex';
       },
       showGroup(item) {
         this.activeGroup = item.name
+        this.activeGroupId = item.id
         if(item.name == 'Подборки') {
           this.tags = []
           this.getCollections()
         }
-        if(item.name == 'collection') {
+        else if(item.name == 'Подборка') {
           this.activeGroup = item.name
         }
-        if(item.name == 'BPM') {
+        else if(item.name == 'BPM') {
           this.tags = []
         }
         else {

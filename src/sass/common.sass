@@ -192,3 +192,57 @@ img, svg
     @media (max-width: 940px)
         padding: vw(14,768) vw(32,768)!important
         height: vw(168,768)
+
+.tag
+    padding: 7px 16px 8px
+    border: 1px solid #fff
+    cursor: pointer
+    display: flex
+    align-items: center
+    transition: 0.3s
+    margin-left: -1px
+    margin-bottom: -1px
+    &:hover
+        background: #2F2F2F
+    &_active
+        background-color: #fff
+        border: 1px solid $dark
+        &:hover
+            background-color: #fff
+        .tag
+            &__name
+                color: $dark
+            &__line
+                background-color: $dark
+            &__icon
+                transform: rotate(45deg)
+    &__name
+        font-family: $bold
+        font-size: 16px
+        line-height: 150%
+        text-align: center
+        letter-spacing: 0.02em
+        margin-right: 10px
+    &__icon
+        width: 16px
+        height: 16px
+        position: relative
+        transition: 0.3s
+    &__line
+        position: absolute
+        width: 14px
+        height: 2px
+        top: 50%
+        left: 50%
+        transform: translate(-50%, -50%)
+        background-color: #fff
+        &_1
+            transform: translate(-50%, -50%) rotate(90deg)
+.unselect
+    -webkit-touch-callout: none
+    -webkit-user-select: none
+    -khtml-user-select: none
+    -moz-user-select: none
+    -ms-user-select: none
+    user-select: none
+    transition: 0.2s
