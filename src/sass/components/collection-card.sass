@@ -2,6 +2,16 @@
 .collection-card
     width: 212px
     margin-bottom: 40px
+    margin-right: 40px
+    @media (max-width: 1400px)
+        width: 198px
+    @media (max-width: 940px)
+        width: vw(173,768)
+        margin-right: vw(40,768)
+        margin-bottom: vw(40,768)
+    @media (max-width: 767px)
+        width: vw(134,320)
+        margin-right: vw(20,320)
     &:hover
         cursor: pointer
         .collection-card__bg
@@ -10,6 +20,12 @@
         position: relative
         height: 212px
         margin-bottom: 8px
+        @media (max-width: 1400px)
+            height: 198px
+        @media (max-width: 940px)
+            height: vw(173, 768)
+        @media (max-width: 767px)
+            height: vw(134,320)
     &__bg
         position: absolute
         top: 0
@@ -33,9 +49,15 @@
         display: flex
         align-items: center
         justify-content: center
+        @media (max-width: 767px)
+            width: vw(60,320)
+            height: vw(60,320)
     &__icon
         width: 32px
         height: 32px
+        @media (max-width: 767px)
+            width: vw(24,320)
+            height: vw(24,320)
         rect, path
             fill: $dark
     &__play
@@ -49,3 +71,5 @@
         overflow: hidden
         white-space: nowrap
         text-overflow: ellipsis
+        @media (max-width: 767px)
+            font-size: vw(14,320)

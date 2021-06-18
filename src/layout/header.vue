@@ -36,9 +36,9 @@
             <!-- <a href="tel:88007001191" class="header__phone">
               8 800 700 11 91
             </a> -->
-            <div class="header__button button__bg button">
+            <!-- <div class="header__button button__bg button">
               Авторизация
-            </div>
+            </div> -->
             <Burger @burger-click="toggleMenu" :is-open="isMenu" />
             <transition name="menu">
               <Menu v-if="isMenu" />

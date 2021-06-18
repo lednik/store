@@ -11,8 +11,16 @@
         >
           {{item.name}}
         </p>
+        <div class="catalog__allTags catalog__allTags-mb" @click="isAllTags = true">
+          <span class="catalog__allTags-name unselect">Все теги</span>
+          <div class="catalog__allTags-arrow">
+            <svg width="10" height="6" viewBox="0 0 10 6" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path d="M1 1L4.92929 4.92929C4.96834 4.96834 5.03166 4.96834 5.07071 4.92929L9 1" stroke="white" stroke-width="2" stroke-linecap="round"/>
+            </svg>
+          </div>
+        </div>
       </div> 
-      <div class="catalog__allTags" @click="isAllTags = true">
+      <div class="catalog__allTags catalog__allTags-dt" @click="isAllTags = true">
         <span class="catalog__allTags-name unselect">Все теги</span>
         <div class="catalog__allTags-arrow">
           <svg width="10" height="6" viewBox="0 0 10 6" fill="none" xmlns="http://www.w3.org/2000/svg">

@@ -13,6 +13,12 @@
         margin: 0 auto
         display: flex
         flex-wrap: wrap
+        @media (max-width: 1400px)
+            width: 912px
+        @media (max-width: 940px)
+            width: vw(600,768)
+        @media (max-width: 767px)
+            width: vw(288,320)
     &__top
         background-color: $dark
         padding: 20px 0 10px
@@ -20,12 +26,20 @@
         font-family: $title
         font-size: 32px
         line-height: 150%
+        @media (max-width: 767px)
+            font-size: vw(20,320)
     &__bottom
         background-color: $dark
         display: flex
         padding: 22px 0
+        @media (max-width: 767px)
+            padding: vw(16,320) 0
         .tags__content
             justify-content: flex-end
+    &__button
+        @media (max-width: 767px)
+            width: 100%
+            text-align: center
     &__list
         flex: 1
         background-color: $body
