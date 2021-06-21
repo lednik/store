@@ -6,6 +6,9 @@
                 <div v-link href="/about" class="footer__nav-item" :class="{'inactive-route': $route.name == 'about'}">
                     О проекте
                 </div>
+                <div v-link href="/catalog" class="footer__nav-item" :class="{'inactive-route': $route.name == 'catalog'}">
+                    Каталог
+                </div>
                 <div v-link href="/tariffs" class="footer__nav-item" :class="{'inactive-route': $route.name == 'tariffs'}">
                     Тарифы
                 </div>

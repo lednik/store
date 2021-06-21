@@ -11,7 +11,7 @@
         >
           {{item.name}}
         </p>
-        <div class="catalog__allTags catalog__allTags-mb" @click="isAllTags = true">
+        <div v-show="activeGroup != 'Подборка' && activeGroup != 'Подборки' && activeGroup != 'BPM'" class="catalog__allTags catalog__allTags-mb" @click="isAllTags = true">
           <span class="catalog__allTags-name unselect">Все теги</span>
           <div class="catalog__allTags-arrow">
             <svg width="10" height="6" viewBox="0 0 10 6" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -20,7 +20,7 @@
           </div>
         </div>
       </div> 
-      <div class="catalog__allTags catalog__allTags-dt" @click="isAllTags = true">
+      <div v-show="activeGroup != 'Подборка' && activeGroup != 'Подборки' && activeGroup != 'BPM'"  class="catalog__allTags catalog__allTags-dt" @click="isAllTags = true">
         <span class="catalog__allTags-name unselect">Все теги</span>
         <div class="catalog__allTags-arrow">
           <svg width="10" height="6" viewBox="0 0 10 6" fill="none" xmlns="http://www.w3.org/2000/svg">

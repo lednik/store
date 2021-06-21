@@ -4,7 +4,7 @@
         @click="emitClick"
     >
         <div class="collection-card__poster">
-          <img :src="item.cover_file_id_url" alt="item.name" class="collection-card__img">
+          <img :src="item.cover_file_id_thumb" alt="item.name" class="collection-card__img">
           <div class="collection-card__bg" :class="{'collection-card__bg_active': isPlaying && isActive}">
             <div @click.stop="playCollection" class="collection-card__button">
               <svg v-if="isPlaying && isActive" class="collection-card__stop collection-card__icon" width="32" height="32" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">

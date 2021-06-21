@@ -7,7 +7,7 @@
             :altName="item.altName"
             :about="item.description"
             :price="item.price"
-            :img="item.cover_img_id_url"
+            :img="item.cover_file_id_url"
             @request="toRequest"
             :key="`tariff-${item.id}`" 
         />

@@ -10,6 +10,14 @@
         </div>
         <div
             v-link
+            href="/catalog"
+            class="menu__item"
+            :class="{'inactive-route': $route.name == 'catalog'}"
+        >
+            Каталог
+        </div>
+        <div
+            v-link
             href="/tariffs"
             class="menu__item"
             :class="{'inactive-route': $route.name == 'tariffs'}"

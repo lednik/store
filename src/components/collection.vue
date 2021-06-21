@@ -11,7 +11,7 @@
                 <div class="collection__tags">
                     <div
                         v-for="item in tags"
-                        class="collection__tag tag collection__activeTag"
+                        class="collection__tag tag collection__activeTag unselect"
                         :class="{'tag_active': item.isActive}"
                         :key="item.id"
                     >
@@ -107,7 +107,7 @@
                 .then(data => {
                     console.log('collection', data.table.records[0]);
                     this.name = data.table.records[0].name
-                    this.img = data.table.records[0].cover_file_id_url
+                    this.img = data.table.records[0].cover_file_id_thumb
                     // this.collections = data.table.records
                 }, data => {
                 })

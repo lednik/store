@@ -41,7 +41,7 @@
               :key="item.id"
             />
           </div>
-          <a href="https://enter.yoga/catalog/" target="_blank" class="home__catalog button__border button">
+          <a v-link to="/contacts" class="home__catalog button__bg button">
             Перейти в каталог
           </a>
         </div>
