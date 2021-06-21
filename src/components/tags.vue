@@ -1,10 +1,16 @@
 <template>
     <div class="tags">
         <div class="tags__top">
-            <div class="tags__content">
+            <div class="tags__top-content tags__content">
                 <div class="tags__title">
                     Все теги
-                </div>    
+                </div>
+                <div class="arrow" @click="$emit('closeTags')">
+                    <div class="arrow-content">
+                        <div class="arrow__line arrow__line_first" />
+                        <div class="arrow__line arrow__line_second" />
+                    </div>
+                </div>
             </div>
         </div>
         <div class="tags__list">

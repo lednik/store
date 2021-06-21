@@ -33,15 +33,12 @@
           <div class="about__list container">
             <track-cmp
               v-for="(item,index) in tracks"
-              :id="item.id"
-              :name="item.title"
-              :author="item.artist"
-              :time="item.duration_str"
+              :item="item"
               @click="startPlaylist(index, tracks)"
               :key="item.id"
             />
           </div>
-          <a v-link to="/contacts" class="home__catalog button__bg button">
+          <a v-link to="/catalog" class="home__catalog button__bg button">
             Перейти в каталог
           </a>
         </div>

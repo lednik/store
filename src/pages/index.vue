@@ -22,10 +22,7 @@
         <track-cmp
           v-for="(item, index) in tracks"
           class="track_short"
-          :id="item.id"
-          :name="item.title"
-          :author="item.artist"
-          :time="item.duration_str"
+          :item="item"
           @click="startPlaylist(index, tracks)"
           :key="item.id"
         />

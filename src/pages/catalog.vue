@@ -39,7 +39,7 @@
         :key="item.id"
       ></collection-card>
     </div>
-    <collection-cmp v-if="activeGroup == 'Подборка'" :id="collectionId" />
+    <collection-cmp v-if="activeGroup == 'Подборка'" :collectionId="collectionId" />
     <div v-show="activeGroup != 'Подборка' && activeGroup != 'Подборки'">
       <div v-if="tags.length > 0" class="catalog__tags">
         <div
@@ -91,13 +91,13 @@
       <div class="catalog__tracks">
         <track-cmp
           v-for="(item,index) in tracks"
-          :id="item.id"
-          :name="item.title"
-          :author="item.artist"
-          :time="item.duration_str"
+          :item="item"
           @click="startPlaylist(index, tracks)"
           :key="item.id"
         />
+        <div v-show="pageNumber + 1 < pagesCount" @click="pageNumber++" class="catalog__loadMore button button__bg">
+          Загрузить еще
+        </div>
       </div>
       
     </div>
@@ -124,7 +124,7 @@ import {mapMutations} from 'vuex';
       'collection-cmp': collection,
       'track-cmp': Track,
       'bpm-cmp': Bpm,
-      'tags-cmp': Tags
+      'tags-cmp': Tags,
     },
     data() {
       return {
@@ -132,7 +132,7 @@ import {mapMutations} from 'vuex';
           {
             name: 'Подборки',
             isActive: true
-          }
+          },
         ],
         collectionId: '',
         activeGroup: 'Подборки',
@@ -143,7 +143,10 @@ import {mapMutations} from 'vuex';
         max: 200,
         bpmRefresh: false,
         isAllTags: false,
-        activeGroupId: ''
+        activeGroupId: '',
+        pageNumber: -1,
+        pagesCount: 1,
+        idNot: []
       }
     },
     watch: {
@@ -155,6 +158,10 @@ import {mapMutations} from 'vuex';
       },
       'max' : function() {
         this.getTracks()
+      },
+      'pageNumber': function() {
+        console.log('pn', this.pageNumber);
+        this.getTracks() 
       }
     },
     methods: {
@@ -171,7 +178,8 @@ import {mapMutations} from 'vuex';
       startPlaylist(index, tracks) {
         this.setPlaylist({
           playlist: tracks,
-          index
+          index,
+          id: 'musicFromTags'
         })
       },
       setBpm($event) {

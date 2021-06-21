@@ -22,6 +22,9 @@ export default {
                 state.id = data.id ? data.id : -1
             }
         },
+        pushToPlaylist(state, data) {
+            state.playlist = state.playlist.concat(data)
+        },
         closePlaylist(state) {
             state.id = -1
             state.currentIndex = -1

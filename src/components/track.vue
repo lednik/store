@@ -12,26 +12,29 @@
       </div>
       <div class="track__info">
         <div class="track__name">
-          <template v-if="name && name != ''">
-            {{ name }}
+          <template v-if="item.title && item.title != ''">
+            {{ item.title }}
           </template>
           <template v-else>
-            bubuka music
+            Unknown Name
           </template>
         </div>
         <div class="track__author">
-          <template v-if="author && author != ''">
-            {{ author }}
+          <template v-if="item.artist && item.artist != ''">
+            {{ item.artist }}
+          </template>
+          <template v-else-if="item.composer && item.composer != ''">
+            {{ item.composer }}
           </template>
           <template v-else>
-            Bubuka music
+            Unknown Artist
           </template>
         </div>
       </div>  
     </div>
     
     <div class="track__time">
-      {{ time }}
+      {{ item.duration_str }}
     </div>
   </div>
 </template>
@@ -40,7 +43,7 @@
 import {mapGetters, mapMutations, mapState} from 'vuex';
 export default {
   name: 'gradient-bg-button',
-  props: ['id', 'name', 'author', 'time'],
+  props: ['item'],
   computed: {
     ...mapState('playlist', ['isPlaying', 'currentIndex']),
     ...mapGetters('playlist', ['getTrack']),
@@ -50,7 +53,7 @@ export default {
       this.toggleIsPlaying()
     },
     'currentIndex': function () {
-      if (this.getTrack && this.getTrack.id == this.id && this.isPlaying == true) {
+      if (this.getTrack && this.getTrack.id == this.item.id && this.isPlaying == true) {
         this.playing = true
       } else {
         this.playing = false
@@ -64,7 +67,7 @@ export default {
   },
   methods: {
     toggleIsPlaying() {
-      if (this.getTrack && this.getTrack.id == this.id && this.isPlaying == true) {
+      if (this.getTrack && this.getTrack.id == this.item.id && this.isPlaying == true) {
         this.playing = true
       } else {
         this.playing = false
@@ -73,6 +76,7 @@ export default {
   },
   mounted() {
     this.toggleIsPlaying()
+    console.log('item', this.item);
   }
 }
 </script>

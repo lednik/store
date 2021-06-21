@@ -20,12 +20,19 @@
         position: relative
         height: 212px
         margin-bottom: 8px
+        display: flex
+        align-items: center
+        justify-content: center
         @media (max-width: 1400px)
             height: 198px
         @media (max-width: 940px)
             height: vw(173, 768)
         @media (max-width: 767px)
             height: vw(134,320)
+        &-icon
+            width: 80px
+            height: 80px
+            
     &__bg
         position: absolute
         top: 0

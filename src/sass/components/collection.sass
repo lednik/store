@@ -10,6 +10,9 @@
         width: 288px
         height: 288px
         margin-right: 40px
+        display: flex
+        align-items: center
+        justify-content: center
         @media (max-width: 940px)
             margin-right: vw(24,768)
         @media (max-width: 767px)
@@ -18,6 +21,9 @@
             margin-right: 0
         img
             object-fit: cover
+    &__poster-icon
+        width: 80px
+        height: 80px
     &__right
         flex: 1
         padding-top: 16px
@@ -51,3 +57,9 @@
                 display: none
             &__name
                 margin-right: 0
+    &__tracks
+        display: flex
+        flex-direction: column
+        align-items: center
+    &__loadMore
+        margin-top: 40px
