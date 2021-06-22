@@ -57,7 +57,6 @@ import Vue from 'vue'
                 this.$emit('toggletag', item)
             },
             getTags() {
-                console.log('here');
                 let action = 'track/tag/list_ajax'
                 let method = 'post'
                 let formData = new FormData()

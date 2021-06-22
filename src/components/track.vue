@@ -76,7 +76,6 @@ export default {
   },
   mounted() {
     this.toggleIsPlaying()
-    console.log('item', this.item);
   }
 }
 </script>

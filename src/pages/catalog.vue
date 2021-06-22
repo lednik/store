@@ -95,7 +95,7 @@
           @click="startPlaylist(index, tracks)"
           :key="item.id"
         />
-        <div v-show="pageNumber + 1 < pagesCount" @click="pageNumber++" class="catalog__loadMore button button__bg">
+        <div v-show="pageNumber + 1 < pagesCount && pagesCount != 1" @click="loadMore" class="catalog__loadMore button button__bg">
           Загрузить еще
         </div>
       </div>
@@ -151,17 +151,19 @@ import {mapMutations} from 'vuex';
     },
     watch: {
       'activeTags' : function () {
+        this.pageNumber = -1
+        this.tracks = []
         this.getTracks()
       },
       'min' : function() {
+        this.pageNumber = -1
+        this.tracks = []
         this.getTracks()
       },
       'max' : function() {
+        this.pageNumber = -1
+        this.tracks = []
         this.getTracks()
-      },
-      'pageNumber': function() {
-        console.log('pn', this.pageNumber);
-        this.getTracks() 
       }
     },
     methods: {
@@ -169,6 +171,10 @@ import {mapMutations} from 'vuex';
       showCollection(id) {
         this.collectionId = id
         this.showGroup({name: 'Подборка'})
+      },
+      loadMore() {
+        this.pageNumber++
+        this.getTracks(true)
       },
       resetBpm() {
         this.min = 0
@@ -258,7 +264,6 @@ import {mapMutations} from 'vuex';
         Vue.http[method](action, formdata)
           .then(response => response.json())
           .then(data => {
-            console.log(data);
             this.collections = data.table.records
           }, data => {
           })

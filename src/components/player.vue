@@ -311,7 +311,6 @@ export default {
 			}
 		},
 		startOnTimeUpdateEvents() {
-			console.log('here');
 			this.$refs.player.ontimeupdate = () => {
 				this.refreshProgressBar('progress')
 				this.refreshProgressBar('progressmobile')

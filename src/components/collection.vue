@@ -87,6 +87,8 @@
             tagsData() {
                 let formData = new FormData()
                 formData.append('pagination[filters][collection_id]', this.collectionId)
+                formData.append('pagination[order]', 'track_count')
+                formData.append('pagination[dir]', 'desc')
                 return formData
             }
         },
@@ -138,7 +140,6 @@
                 .then(response => response.json())
                 .then(data => {
                     this.tags = data.table.records
-                    console.log('tags', this.tags);
                 }, data => {
                 })
             }

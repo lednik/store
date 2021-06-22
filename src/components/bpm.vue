@@ -60,7 +60,6 @@
                 }, 300);
             },
             emitToParent() {
-                console.log('here');
                 this.$emit('bpm', {min: this.min, max: this.max})
             },
             startEvents() {

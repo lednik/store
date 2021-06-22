@@ -37,7 +37,6 @@ export default {
   methods: {
     toRequest() {
       this.$emit('request', this.name)
-      console.log(ym);
       ym(80155144,'reachGoal','form_open')
     }
   }
