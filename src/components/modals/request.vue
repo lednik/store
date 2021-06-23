@@ -56,21 +56,6 @@
               @input="form.email.error = false"
             >
         </div>
-        <!-- <div class="input__wrapper">
-            <transition name="fade">
-              <div v-if="form.country.error" class="input__error">
-                Введите страну
-              </div>
-            </transition>
-            <input
-              v-model="form.country.value"
-              type="text"
-              class="input"
-              placeholder="Ваша страна*"
-              :class="{'t-input__error' : form.country.error}"
-              @input="form.country.error = false"
-            >
-        </div> -->
         <div class="input__wrapper">
             <transition name="fade">
               <div v-if="form.city.error" class="input__error">
@@ -86,16 +71,13 @@
               @input="form.city.error = false"
             >
         </div>
-        <!-- <div class="input__wrapper">
-            <input
-              v-model="form.company.value"
-              type="text"
-              class="input"
-              placeholder="Название организации"
-              :class="{'t-input__error' : form.company.error}"
-              @input="form.company.error = false"
-            >
-        </div> -->
+    </div>
+    <div class="request__files request__agree">
+      <div class="request__checkbox" :class="{'request__checkbox_active': form.isAgree.value, 'request__checkbox_error': form.isAgree.error}"></div>
+      <span class="request__text" :class="{'request__text_error': form.isAgree.error}">
+        Я согласен с <a class="request__file" href="/src/assets/documents/open_offer_agreement_1.1.pdf" target="_blank">условиями договора-оферты</a> и полностью принимаю их
+      </span>
+      <input @click="form.isAgree.error = false" v-model="form.isAgree.value" type="checkbox" class="request__checkbox-input">
     </div>
     <div class="request__files">
         Оставляя заявку, вы соглашаетесь с <a class="request__file" href="/src/assets/documents/Personal_data_using.pdf" target="_blank">условиями пользовательского соглашения</a> и <a class="request__file" href="/src/assets/documents/Personal_data_using.pdf" target="_blank"> политикой конфиденциальности</a>
@@ -144,6 +126,10 @@ export default {
             // },
             tariff_id: {
               value: ''
+            },
+            isAgree: {
+              value: false,
+              error: false
             }
         },
         activeTariff: ''
@@ -155,7 +141,10 @@ export default {
       let formData = new FormData()
       formData.append('action', 'save')
       for (let key in this.form) {
-		  	formData.append(`data[${key}]`, this.form[key].value)
+        if(key.toString() != 'isAgree') {
+          console.log(key);
+		  	  formData.append(`data[${key}]`, this.form[key].value)
+        }
 		  }
       return formData
     },
@@ -197,6 +186,10 @@ export default {
             },
             tariff_id: {
               value: ''
+            },
+            isAgree: {
+              value: false,
+              error: false
             }
         }
     },
@@ -223,6 +216,10 @@ export default {
     },
     validForm () {
         let valid = true
+        if(!this.form.isAgree.value) {
+          this.form.isAgree.error = true
+          valid = false
+        }
         if (!this.form.name.value ||
             this.form.name.value.length < 2 ||
             this.form.name.value === '' ||

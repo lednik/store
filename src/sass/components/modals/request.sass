@@ -10,6 +10,7 @@
         margin-bottom: 24px
 
     &__files
+        position: relative
         width: 364px
         color: #757575
         font-family: $mid
@@ -39,3 +40,53 @@
     
     &__button
         width: 100%
+    &__agree
+        position: relative
+        display: flex
+        align-items: center
+        align-items: center
+    &__checkbox
+        position: relative
+        width: 16px
+        height: 16px
+        min-width: 16px
+        margin-right: 16px
+        border: 1px solid $dark
+        transition: 0.3s
+        &::before
+            content: ''
+            position: absolute
+            top: 50%
+            left: 50%
+            display: block
+            width: 4px
+            height: 8px
+            border-bottom: 1px solid $dark
+            border-right: 1px solid $dark
+            transform: translate(-2px, -6px) rotate(45deg)
+            opacity: 0
+        &_active
+            &::before
+                opacity: 1
+        &_error
+            border: 1px solid #D02B2B
+        &-input
+            position: absolute
+            left: 0
+            top: 0
+            width: 100%
+            height: 100%
+            cursor: pointer
+            opacity: 0
+    &__text
+        position: relative
+        z-index: 2
+        pointer-events: none
+        transition: 0.3s
+        &_error
+            color: #D02B2B
+            a
+                color: #D02B2B
+        a
+            pointer-events: auto
+            transition: 0.3s
