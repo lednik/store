@@ -3,9 +3,7 @@
     <div class="tarif-card__name">
       {{ name }}
     </div>
-    <div class="tarif-card__about">
-      {{ about }}
-    </div>
+    <div class="tarif-card__about" v-html="about" />
     <div class="tarif-card__price">
       <template v-if="price != 0">
         {{ price }} ₽

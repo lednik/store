@@ -174,7 +174,7 @@
 import {mapGetters, mapMutations, mapState} from 'vuex';
 export default {
 	computed: {
-		...mapState('playlist', ['currentIndex', 'isPlaying', 'waitingToggle']),
+		...mapState('playlist', ['currentIndex', 'isPlaying', 'waitingToggle', 'waitingPlaylist']),
 		...mapGetters('playlist', ['getTrack']),
 	},
 	watch: {
@@ -187,6 +187,13 @@ export default {
 				this.setWaitingToggle()
 			}
 		},
+		'waitingPlaylist': function () {
+			if(this.waitingPlaylist == true) {
+				this.pause()
+				this.setTrack()
+				this.setWaitingPlaylist()
+			}
+		}
 	},
 	data() {
         return {
@@ -202,7 +209,7 @@ export default {
         }
     },
   	methods: {
-		...mapMutations('playlist', ['playNext','playPrev', 'setIsPlaying', 'setWaitingToggle', 'closePlaylist']),
+		...mapMutations('playlist', ['playNext','playPrev', 'setIsPlaying', 'setWaitingToggle', 'setWaitingPlaylist', 'closePlaylist']),
 		toggleTrack() {
 			if(this.$refs.player.paused) {
 				this.play()
@@ -366,6 +373,7 @@ export default {
 		this.$refs.player.volume = 1
 		this.volume = 1
 		this.setTrack()
+		this.setWaitingPlaylist()
 		this.startOnTimeUpdateEvents()
 		this.$refs.player.onended = () => {
 			this.playNext()

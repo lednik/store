@@ -5,6 +5,7 @@ export default {
         currentIndex: -1,
         playlist: [],
         waitingToggle: false,
+        waitingPlaylist: false,
         isPlaying: false,
 	},
 	getters: {
@@ -20,6 +21,7 @@ export default {
                 state.playlist = data.playlist
                 state.currentIndex = data.index
                 state.id = data.id ? data.id : -1
+                state.waitingPlaylist = true
             }
         },
         pushToPlaylist(state, data) {
@@ -31,6 +33,13 @@ export default {
             state.playlist = []
             state.waitingToggle = false
             state.isPlaying = false
+        },
+        setWaitingPlaylist(state, data) {
+            if(data) {
+                state.waitingPlaylist = data
+            } else {
+                state.waitingPlaylist = false
+            }
         },
         setWaitingToggle(state, data) {
             if(data) {

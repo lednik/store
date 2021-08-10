@@ -4,9 +4,7 @@
             <div class="tariff__title">
                 {{ name }}
             </div>
-            <div class="tariff__about">
-                {{ about }}
-            </div>
+            <div class="tariff__about" v-html="about" />
             <div class="tariff__price">
                 <template v-if="price != 0">
                     {{ price }} ₽
