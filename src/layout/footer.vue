@@ -1,5 +1,5 @@
 <template>
-<div class="footer hide-before-route">
+<div v-if="$route.name != 'authorization' && $route.name != 'recovery' & $route.name != 'changePassword'" class="footer hide-before-route">
    <div class="footer__content container hide-before-route">
        <div class="footer__left">
             <div class="footer__nav">

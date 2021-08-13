@@ -50,7 +50,6 @@ export default {
       /////////////////////
       let data = {
         pagination: {
-          // page_size: 1,
           filters: {
             demo_file_id_isnotnull: true
           }

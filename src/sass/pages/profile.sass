@@ -1,0 +1,81 @@
+@import "~@styles/main.sass"
+.profile
+    margin-top: 102px
+    width: 1224px
+    margin: 0 auto
+    &__top
+        display: flex
+        justify-content: space-between
+        align-items: center
+        margin-bottom: 48px
+    &__hello
+        font-family: $mid
+        font-size: 24px
+        line-height: 150%
+        letter-spacing: 0.03em
+        color: #515151
+    &__name
+        font-size: 72px
+        line-height: 150%
+        letter-spacing: 0.03em
+        color: #FFFFFF
+        font-family: $title
+    &__password
+        font-size: 20px
+        line-height: 150%
+        letter-spacing: 0.02em
+        color: #515151
+        padding: 13px 24px 17px
+        border: 1px solid #515151
+        cursor: pointer
+    &__info
+        background-color: #262626
+        box-shadow: 0px 5px 36px -5px rgba(0, 0, 0, 0.16)
+        padding: 36px 36px 48px
+        margin-bottom: 112px
+        &-title
+            font-family: $mid
+            font-size: 20px
+            line-height: 150%
+            letter-spacing: 0.03em
+            margin-bottom: 24px
+    &__row
+            display: flex
+    &__column
+        &:not(:last-child)
+            margin-right: 80px
+        margin-right: 80px
+    &__label
+        font-size: 16px
+        line-height: 150%
+        letter-spacing: 0.03em
+        color: #515151
+        font-family: $mid
+        margin-bottom: 4px
+    &__value
+        font-family: $mid
+        font-size: 24px
+        line-height: 150%
+        letter-spacing: 0.02em
+        white-space: none
+        overflow: hidden
+        text-overflow: ellipsis
+        &_email
+            width: 303px
+        &_phone
+            width: 224px
+        &_location
+            width: 188px
+        &_tariff
+            width: 125px
+    &__controls
+        display: flex
+        justify-content: space-between
+        align-items: center
+        margin-bottom: 48px
+    &__history
+        font-size: 40px
+        line-height: 150%
+        letter-spacing: 0.03em
+        font-family: $title
+

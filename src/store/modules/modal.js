@@ -5,8 +5,7 @@ export default {
         props: {},
         list: [],
         success: false,
-        message: '',
-        isInfoModal: false
+        message: ''
 	},
 	getters: {
 	},

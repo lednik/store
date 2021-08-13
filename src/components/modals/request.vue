@@ -239,12 +239,6 @@ export default {
             this.form.email.error = true
             valid = false
         }
-        // if (!this.form.country.value ||
-        //     this.form.country.value === ''
-        // ) {
-        //     this.form.country.error = true
-        //     valid = false
-        // }
         if (!this.form.city.value ||
             this.form.city.value === ''
         ) {

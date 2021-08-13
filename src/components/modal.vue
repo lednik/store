@@ -53,7 +53,7 @@
             info
         },
         computed: {
-            ...mapState('modal', ['activeModalName', 'isInfoModal'])
+            ...mapState('modal', ['activeModalName'])
         },
         methods: {
             ...mapMutations('modal', ['closeModal']),
@@ -70,9 +70,6 @@
             },
         },
         created() {
-            // if (window.innerWidth < 768) {
-            //     this.transiton = 'mobilemodal';
-            // }
         },
         mounted() {
         }

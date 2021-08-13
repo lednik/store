@@ -8,6 +8,11 @@ import Tariffs from '@pages/tariffs.vue';
 import About from '@pages/about.vue';
 import Contacts from '@pages/contacts.vue';
 import catalog from '@pages/catalog.vue';
+import authorization from '@pages/authorization.vue';
+import recovery from '@pages/recovery.vue';
+import changePassword from '@pages/change-password.vue';
+import profile from '@pages/profile.vue';
+
 // import collection from '@pages/collection.vue';
 
 
@@ -37,11 +42,26 @@ const routes = [
         name: 'catalog',
         component: catalog
     },
-    // {
-    //     path: '/collection/:id',
-    //     name: 'collection',
-    //     component: collection
-    // }
+    {
+        path: '/authorization',
+        name: 'authorization',
+        component: authorization
+    },
+    {
+        path: '/recovery',
+        name: 'recovery',
+        component: recovery
+    },
+    {
+        path: '/change-password',
+        name: 'changePassword',
+        component: changePassword
+    },
+    {
+        path: '/profile',
+        name: 'profile',
+        component: profile
+    }
 ];
 
 export const router = new VueRouter({
